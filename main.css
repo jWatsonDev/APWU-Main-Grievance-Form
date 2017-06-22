@@ -130,7 +130,7 @@ label {
 @media (max-width:600px){
   #drop-down-menu{
     width:250px;
-    margin: 10px 15px 15px 40px;
+    margin: 10px 15px 15px 0px;
     
   }
   #address{
