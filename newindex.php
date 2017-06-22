@@ -99,6 +99,21 @@
 
             </div>
             <input id="submit" type="submit" value="Submit Grievance">
+             <?php
+       
+ include ('grievance.php');
+
+        $sql = 'SELECT * FROM post';
+        
+   $result = mysqli_query($conn, $sql);
+    print  mysqli_error($conn);
+    
+      while($row = mysqli_fetch_array($result))
+          echo "<h1>". $row['name']."<br>" .$row['employeeType']. "</h1><br>";
+        
+        
+        mysqli_close($conn); 
+        ?>     
         </form>
     </div>
 </body>
