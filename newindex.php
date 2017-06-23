@@ -101,18 +101,13 @@
             <input id="submit" type="submit" value="Submit Grievance">
              <?php
        
- include ('grievance.php');
-
-        $sql = 'SELECT * FROM post';
+ require_once ('grievance.php');
+ require_once ('user.php');
+ require_once ('viewUser.php');
+      
         
-   $result = mysqli_query($conn, $sql);
-    print  mysqli_error($conn);
-    
-      while($row = mysqli_fetch_array($result))
-          echo "<h1>". $row['name']."<br>" .$row['employeeType']. "</h1><br>";
-        
-        
-        mysqli_close($conn); 
+   $users = new viewUser();
+   $users->showAllUsers();
         ?>     
         </form>
     </div>
