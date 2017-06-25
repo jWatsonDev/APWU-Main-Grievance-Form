@@ -31,7 +31,7 @@
         </div>
     </div>
     <div id="form-border">
-        <form id="myForm" action="submission.php" method="POST">
+        <form id="myForm" action="user.php" method="POST">
             <h3> Full Name:</h3>
             <input id="full-name" type="text" name="Full Name" size="28" maxlength="128">
 
@@ -43,10 +43,12 @@
               <option value="PSE">Postal Support Employee</option>
         
              </select>
+             <div class="error" id = "first_error">Full Name Required</div>
             <div class="input-spacing">
                 <h3>Date of Grievance (mm/dd/yy):</h3>
                 <input id="grievance-date" type="text" name="grievance-date" size="10" maxlength="10">
             </div>
+             <div class="error" id="dateError">Grievance date required</div>
             <div class="input-spacing">
                 <h3> Address:</h3>
                 <input id="address" type="text" name="address" size="50" maxlength="80">
@@ -63,6 +65,7 @@
                 <h3> Employee ID:</h3>
                 <input id="eid" type="text" name="eid" size="8" maxlength="8">
             </div>
+              <div class = "error" id = "eidError">Employee ID required</div>
             <div class="input-spacing">
                 <h3> Phone Number:</h3>
                 <input id="phone-number" type="text" name="phone" size="11" maxlength="11">
@@ -71,22 +74,27 @@
                 <h3> Seniority Date(mm/dd/yy):</h3>
                 <input id="seniority" type="text" name="seniority" size="10" maxlength="10">
             </div>
+              <div class="error" id="seniority-date">Seniority Date required</div>
             <div class="input-spacing">
                 <h3> Machine #</h3>
-                <input id="seniority" type="text" name="seniority" size="2" maxlength="10">
+                <input id="machine" type="text" name="machine" size="2" maxlength="10">
             </div>
+            <div class="error" id="machineNum">Machine # required</div>
             <div class="input-spacing">
                 <h3>I worked alone from<br>(Example: 11:45pm until 1:20am)</h3><br>
-                <input id="time-alone" type="text" name="time-alone" size="20" maxlength="10">
+                <input id="time-alone" type="text" name="timeAlone" size="20" maxlength="10">
             </div>
+              <div class="error" id="timeAlone">Must provide time worked alone</div>
             <br>
             <div class="input-spacing">
                 <h3>I had to feed and sweep the machine myself</h3>
-                <input type="radio" name="radio" value="Yes">Yes <input type="radio" name="radio" value="No">No
+                <input id="radio-null" type="radio" name="radio" value="Yes">Yes <input id="radio-null" type="radio" name="radio" value="No">No
             </div>
+            <div class="error" id="feedSweep">Did you feed and sweep?</div>
             <br>
             <div class="input-spacing">
                 <h3>I worked approximatedly <input id="mail-processed" type="number" name="mail-processed" size="5" maxlength="10"> pieces of mail during the time I worked alone.</h3>
+                  <div class="error" id="mailProcessed">Pieces of mail processed required</div>
                 <br> <br>
             </div>
             <div class="input-spacing">
@@ -96,6 +104,7 @@
             <br>
             <div class="input-spacing">
                 <h3>I worked alone for a total of <br><input id="hour-worked-alone" type="number" name="hours-worked-alone" size="2" maxlength="2" placeholder="Hours"> and <input id="time-swept" type="number" name="time-swept" size="5" maxlength="10" placeholder="Minutes"> <br> on the above date and machine.</h3>
+                <div class="error" id="totalHoursWorkedAlone">Total hours worked alone required</div>
 
             </div>
             <input id="submit" type="submit" value="Submit Grievance">
@@ -103,11 +112,10 @@
        
  require_once ('grievance.php');
  require_once ('user.php');
- require_once ('viewUser.php');
+ 
       
         
-   $users = new viewUser();
-   $users->showAllUsers();
+   
         ?>     
         </form>
     </div>

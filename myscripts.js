@@ -22,14 +22,36 @@ $(document).ready(function () {
         errors = true;
                 }
                 
-    if($("#date").val() === "") {
+    if($("#grievance-date").val() === "") {
                     $("#dateError").show("slow");
      errors = true;
                 }
-    if($("#hours").val() === ""){
-                    $("#hoursError").show("slow");
-     errors = true;
+         if ($("#seniority").val() === "") {
+        $("#seniority-date").show("slow");
+        errors = true;
                 }
+         if ($("#machine").val() === "") {
+        $("#machineNum").show("slow");
+        errors = true;
+                }
+         if ($("#time-alone").val() === "") {
+        $("#timeAlone").show("slow");
+        errors = true;
+                }
+         if ($("#radio-null").val() === "") {
+        $("#feedSweep").show("slow");
+        errors = true;
+                }
+         if ($("#mail-processed").val() === "") {
+        $("#mailProcessed").show("slow");
+        errors = true;
+                }
+        if($("#hour-worked-alone").val()=== ""){
+            $("#totalHoursWorkedAlone").show("slow")
+            errors = true;
+        }
+    
+         
  
  //If there are errors then show a general error message
 
