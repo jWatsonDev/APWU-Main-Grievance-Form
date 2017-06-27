@@ -42,8 +42,8 @@ header {
 #drop-down-menu {
   display:block;
   width: 250px;
-  padding: 10px 5px;
-  margin-left: 8px;
+  padding: 5px 5px;
+  margin-left: 10px 8px;
 }
 
 .close {
