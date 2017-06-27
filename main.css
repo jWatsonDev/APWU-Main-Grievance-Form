@@ -5,6 +5,8 @@ body {
     height: 100%;
     margin: 0 auto;
 }
+
+
 #mail-processed{
     width: 90px;
 }
@@ -26,7 +28,7 @@ header {
     border: 1px solid #ffc6c6;
     text-shadow: 0px 1px 1px white;
     display: none;
- 
+
 }
 
 .success {
@@ -38,9 +40,10 @@ header {
 }
 
 #drop-down-menu {
-    width: 150px;
-    padding-left: 5px;
-    margin-left: 8px;
+  display:block;
+  width: 250px;
+  padding: 10px 5px;
+  margin-left: 8px;
 }
 
 .close {
@@ -123,14 +126,16 @@ label {
     height: 100%;
     display: none;
 }
+
 @media (max-width:600px){
   #drop-down-menu{
+    display: block;
     width:250px;
     margin: 10px 15px 15px 0px;
-    
+
   }
   #address{
     width: 180px;
   }
-  
+
 }
