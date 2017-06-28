@@ -16,7 +16,7 @@ class User extends Dbh{
   private $_POST['mail-processed'];
   private $_POST['time-helped'];
   private $_POST['time-swept'];
-  private $_POST['hour-worked-alone'];
+  private $_POST['hours-worked-alone'];
   private $_POST['minutes-worked-alone'];
     protected function insertUserData() {
         $sql = 'SELECT * FROM post';

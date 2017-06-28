@@ -18,15 +18,7 @@
 <header>
 
     <p id="brand">APWU Grievance Form</p>
-    <?php
 
-require_once ('grievance.php');
-require_once ('user.php');
-
-
-
-
-?>
 </header>
 
 <body>
@@ -40,7 +32,7 @@ require_once ('user.php');
         </div>
     </div>
     <div id="form-border">
-        <form id="myForm" action="viewUser.php" method="POST">
+        <form id="myForm" action="user.php" method="POST">
           <h3> Full Name:</h3>
           <input id="full-name" type="text" name="full-name" size="28" maxlength="128">
 <div class="error" id = "first_error">Full Name Required</div>
@@ -114,7 +106,7 @@ require_once ('user.php');
             </div>
             <br>
             <div class="input-spacing">
-                <h3>I worked alone for a total of <br><input id="hour-worked-alone" type="number" name="hours-worked-alone" size="2" maxlength="2" placeholder="Hours"> and <input id="minutes-worked-alone" type="number" name="minutes-worked-alone" size="5" maxlength="10" placeholder="Minutes"> <br> on the above date and machine.</h3>
+                <h3>I worked alone for a total of <br><input id="hours-worked-alone" type="number" name="hours-worked-alone" size="2" maxlength="2" placeholder="Hours"> and <input id="minutes-worked-alone" type="number" name="minutes-worked-alone" size="5" maxlength="10" placeholder="Minutes"> <br> on the above date and machine.</h3>
                 <div class="error" id="totalHoursWorkedAlone">Total hours worked alone required</div>
 
             </div>
