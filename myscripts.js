@@ -4,7 +4,7 @@ $(document).ready(function () {
     $("#myForm").submit(function (event) {
 
 
-  event.preventDefault();
+
 
    //Assume there are no errors
         var errors = false;
@@ -18,7 +18,7 @@ $(document).ready(function () {
             $("#first_error").show("slow");
             errors = true;
         }
-        if ($('#drop-down-menu-error').val() ===''){
+        if ($('#drop-down-menu').val() ==='none'){
           $('#drop-down-menu-error').show("slow");
           errors = true;
         }
@@ -52,7 +52,7 @@ $(document).ready(function () {
         $("#mailProcessed").show("slow");
         errors = true;
                 }
-        if($("#hour-worked-alone").val()=== ""){
+        if($("#hours-worked-alone").val()=== ""){
             $("#totalHoursWorkedAlone").show("slow")
             errors = true;
         }
