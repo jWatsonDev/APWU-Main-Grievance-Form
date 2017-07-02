@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APWU Grievances</title>
@@ -43,7 +43,7 @@
 
               <option value="PTR">Part Time Regular</option>
 
-            <option value="PSE">Postal Support Employee</option>
+              <option value="PSE">Postal Support Employee</option>
 
            </select>
            <div class="error" id = "drop-down-menu-error">Please select your Employee Status</div>
@@ -79,8 +79,44 @@
             </div>
               <div class="error" id="seniority-date">Seniority Date required</div>
             <div class="input-spacing">
+                <h3> (Pay Status) Level:</h3>
+                <input id="payLevel" type="text" name="payLevel" size="10" maxlength="10">
+            </div>
+<div class="input-spacing">
+                <h3> Whats you pay step:</h3>
+                <input id="payStep" type="text" name="payStep" size="10" maxlength="10">
+            </div>
+              <div class="input-spacing">
+                <h3> What tour are you on:</h3>
+                <input id="tour" type="text" name="tour" size="10" maxlength="10">
+            </div>
+<div class="input-spacing">
+                <h3> What are your days off:</h3>
+                <input id="offDays" type="text" name="offDays" size="10" maxlength="10">
+            </div>
+
+              <select name="veteranStatus" id="drop-down-menu">
+                <option value="none">Veteran Status?</option>
+
+                <option value="Yes">Yes</option>
+
+                  <option value="NO">No</option>
+
+               </select>
+                <select name="layoffProtected" id="drop-down-menu">
+                   <option value="none">Layoff Protected?</option>
+
+                   <option value="YES">Yes</option>
+
+                     <option value="NO">No</option>
+
+                  on>
+
+                  </select>
+
+            <div class="input-spacing">
                 <h3> Machine #</h3>
-                <input id="machine" type="text" name="machine" size="2" maxlength="10">
+                <input id="machine" type="text" name="machine" size="20" maxlength="10">
             </div>
             <div class="error" id="machineNum">Machine # required</div>
             <div class="input-spacing">
@@ -88,6 +124,12 @@
                 <input id="time-alone" type="text" name="timeAlone" size="20" maxlength="28">
             </div>
               <div class="error" id="timeAlone">Must provide time worked alone</div>
+            <br>
+            <div class="input-spacing">
+                <h3>SUPERVISORS NAME:</h3><br>
+                <input id="supervisor" type="text" name="supervisor" size="28" maxlength="28">
+            </div>
+              <div class="error" id="supervisor-error">Supervisor on duty required</div>
             <br>
             <div class="input-spacing">
                 <h3>I had to feed and sweep the machine myself</h3>

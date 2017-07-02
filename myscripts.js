@@ -22,6 +22,10 @@ $(document).ready(function () {
           $('#drop-down-menu-error').show("slow");
           errors = true;
         }
+        if ($('#supervisor').val() ===''){
+          $('#supervisor-error').show("slow");
+          errors = true;
+        }
 
         if ($("#eid").val() === "") {
         $("#eidError").show("slow");

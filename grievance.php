@@ -1,9 +1,10 @@
 <?php
 try{
-$conn = new PDO('mysql:host=localhost;dbname=grievanceInfo;charset=utf8;','roo','Cd151988@$');
+$conn = new PDO('mysql:host=localhost;dbname=grievanceInfo;charset=utf8;','root','Cd151988@$');
 }
 
 catch(Exception $e) {
-   echo "We have an error";
-  //  echo $e->getMessage();
+   echo "We have an error"."<br>";
+  echo $e->getMessage()."<br>";
+  die();
 }
