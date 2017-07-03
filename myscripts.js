@@ -87,7 +87,7 @@ if(errors){
  });        //Make the Close window button work
                     $(".close").click(function() {
         $(".overlay").fadeOut();
-
+                       
 
             });
 
