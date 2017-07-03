@@ -1,6 +1,6 @@
 <?php
 try{
-$conn = new PDO('mysql:host=localhost;dbname=grievanceInfo;charset=utf8;','root','Cd151988@$');
+$conn = new PDO('mysql:host=localhost;dbname=grievanceInfo;charset=utf8;','root','');
 }
 
 catch(Exception $e) {
