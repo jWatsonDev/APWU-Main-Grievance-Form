@@ -59,17 +59,29 @@ header {
 
 p#brand {
     color: white;
-    width: 100%;
     margin: 0 auto;
     padding: 15px 5px 15px 10px;
     display: inline-block;
+    width: 47%;
 }
 #log-in{
   text-align: right;
   display: inline-block;
-
+width: 47%;
+color: white;
+font-size: 1.2em;
+margin: 0 auto;
 }
-
+a:link {
+  color:white;
+  text-decoration: none;
+}
+a:visited{
+  color:white;
+}
+a:active{
+  color: white;
+}
 div#form-border {
     margin: 20px 0 25px 10px;
 }
