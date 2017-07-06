@@ -10,7 +10,7 @@
     <title>APWU Grievances</title>
 
     <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="myscripts.js">
+    <script type="text/javascript" src="inc.javascript/userspage.js">
     </script>
 
     <link rel="stylesheet" href="inc.styling/main.css">
@@ -19,7 +19,10 @@
 <header>
 
     <p id="brand">APWU Grievance Form</p>
-    <p id="log-in"><a href= "">Log out</a></p>
+    <div class="nav-link-clear">
+    <p id="update-account-info"><a href="">Update Account Info</a></p>
+    <p id="log-out"><a href= "">Log out</a></p>
+  </div>
 </header>
 
 <body>
@@ -33,13 +36,7 @@
                 <h3>Date of Grievance (mm/dd/yy):</h3>
                 <input id="grievance-date" type="text" name="grievance-date" size="10" maxlength="10">
             </div>
-             <div class="error" id="dateError">Grievance date required</div>
-
-            <div class="input-spacing">
-                <h3> Employee ID:</h3>
-                <input id="eid" type="text" name="eid" size="8" maxlength="8">
-            </div>
-              <div class = "error" id = "eidError">Employee ID required</div>
+             <div class="error" id="grievanceDateError">Grievance date required</div>
 
 
             <div class="input-spacing">
@@ -66,14 +63,16 @@
             <div class="error" id="feedSweep">Did you feed and sweep?</div>
             <br>
             <div class="input-spacing">
-                <h3>I worked approximatedly <input id="mail-processed" type="number" name="mail-processed" size="5" maxlength="10"> pieces of mail during the time I worked alone.</h3>
+                <h3>I worked approximatedly <input id="mail-processed" type="number" name="mail-processed" size="5" maxlength="10"> <br>pieces of mail during the time I worked alone.</h3>
                   <div class="error" id="mailProcessed">Pieces of mail processed required</div>
-                <br> <br>
+                <br>
             </div>
             <div class="input-spacing">
+              <div class="optional"> <div class="optional-help-recieved"> <h2>Only complete field if you receieved help</h2></div>
                 <h3>I did receive help at approximately <input id="time-helped" type="text" name="time-helped" size="5" maxlength="10"> <br>this person only swept the machine which took about <input id="time-swept" type="number" name="time-swept" size="5" maxlength="10" placeholder="Minutes"> then I worked by myself again.</h3>
-
+              </div>
             </div>
+
             <br>
             <div class="input-spacing">
                 <h3>I worked alone for a total of <br><input id="hours-worked-alone" type="number" name="hours-worked-alone" size="2" maxlength="2" placeholder="Hours"> and <input id="minutes-worked-alone" type="number" name="minutes-worked-alone" size="5" maxlength="10" placeholder="Minutes"> <br> on the above date and machine.</h3>

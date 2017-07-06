@@ -5,6 +5,28 @@ body {
     height: 100%;
     margin: 0 auto;
 }
+@media (max-width:1200px) {
+
+
+#update-account-info{
+  display: inline-block;
+  width: 145px;
+  padding-left: 65px
+}
+#log-out{
+  display: inline-block;
+width: 75px;
+padding-left: 5px;
+color: white;
+font-size: 1.2em;
+margin: 0 auto;
+}
+.nav-link-clear{
+  width: 50%;
+float: right;
+text-align: right;
+margin-right: 50px;
+}
 div form h3{
 
   margin: 10px 10px;
@@ -19,7 +41,7 @@ div form div input{
 header {
     width: 100%;
     background-color: #003399;
-    height: 50px;
+    height: inherit;
     margin: 0 auto;
     padding: 10px;
 }
@@ -36,6 +58,19 @@ header {
     display: none;
 
 }
+.optional{
+
+  background: #f19999 ;
+width: 60%;
+color: white;
+border-radius: 10px;
+
+}
+.optional-help-recieved{
+  text-align: center;
+
+}
+
 
 .success {
     z-index: 1000;
@@ -68,16 +103,13 @@ p#brand {
     margin: 0 auto;
     padding: 15px 5px 15px 10px;
     display: inline-block;
-    width: 47%;
+    width: 40%;
 }
-#log-in{
-  text-align: right;
-  display: inline-block;
-width: 47%;
-color: white;
-font-size: 1.2em;
-margin: 0 auto;
 
+.nav-link-clear:after{
+  content:"";
+  clear:both;
+  display: block;
 }
 p a:link {
   color:white;
@@ -102,6 +134,7 @@ label {
 
 #submit {
     margin-top: 10px;
+    margin-left: 20px;
 }
 
 #submit:hover {
@@ -124,19 +157,42 @@ label {
     width: 100%;
     height: 100%;
 }
-
-@media (max-width:600px){
+}
+@media (max-width:663px) {
+  .nav-link-clear{
+    margin-right: 0;
+  }
+  #update-account-info{
+    padding-left: 15px;
+        margin: 5px auto;
+  }
+}
+@media (max-width:360px){
   #drop-down-menu{
     display: block;
     width:250px;
 
   }
+  .optional{
+    width: auto;
+  }
+  header{
+    height: inherit;
+  }
+  #update-account-info{
+    display: block;
+    padding-left:0;
+    margin: 10px auto;
+  }
+  .nav-link-clear{
+    margin-right: 0;
+  }
+  #log-out{
+    display: block;
+    margin: 10px auto;
+  }
   #address{
     width: 180px;
-  }
-
-  #log-in{
-    width: 30%;
   }
 
 }

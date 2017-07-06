@@ -23,7 +23,7 @@ $(document).ready(function () {
               errors = true;
         }
         if ($('#address').val() === "") {
-            $('address-error').show("slow");
+            $('#address-error').show("slow");
             errors = true;
         }
 
