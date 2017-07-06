@@ -12,7 +12,7 @@
     <script type="text/javascript" src="myscripts.js">
     </script>
 
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="inc.styling/signup.css">
 
 </head>
 
@@ -26,6 +26,80 @@
   <div class="signUpArea">
 <form id="sign-up-form" method="post" action="inc.phplogic/signup.php">
 <h3>Create your profile</h3>
+<div class="input-spacing">
+<h3> Full Name:</h3>
+<input id="full-name" type="text" name="full-name" size="28" maxlength="128">
+</div>
+<div class="error" id = "first_error">Full Name Required</div>
+          <select name="employeeStatus" id="drop-down-menu">
+            <option value="none">Select Employee Type</option>
+
+            <option value="FTR">Full Time Regular</option>
+
+              <option value="PTR">Part Time Regular</option>
+
+              <option value="PSE">Postal Support Employee</option>
+
+           </select>
+           <div class="error" id = "drop-down-menu-error">Please select your Employee Status</div>
+<div class="input-spacing">
+<h3> Address:</h3>
+<input id="address" type="text" name="address" size="50" maxlength="80">
+</div>
+<div class="input-spacing">
+<h3> City:</h3>
+<input id="city" type="text" name="city" size="25" maxlength="50">
+</div>
+<div class="input-spacing">
+<h3> State:</h3>
+<input id="state" type="text" name="state" size="25" maxlength="25">
+</div>
+<div class="input-spacing">
+<h3> Employee ID:</h3>
+<input id="eid" type="text" name="eid" size="8" maxlength="8">
+</div>
+<div class="input-spacing">
+    <h3> Phone Number:</h3>
+    <input id="phone-number" type="text" name="phone" size="11" maxlength="11">
+</div>
+<div class="input-spacing">
+    <h3> Seniority Date(mm/dd/yy):</h3>
+    <input id="seniority" type="text" name="seniority" size="10" maxlength="10">
+</div>
+<div class="input-spacing">
+    <h3> (Pay Status) Level:</h3>
+    <input id="payLevel" type="text" name="payLevel" size="10" maxlength="10">
+</div>
+<div class="input-spacing">
+                <h3> Pay Step:</h3>
+                <input id="payStep" type="text" name="payStep" size="10" maxlength="10">
+            </div>
+              <div class="input-spacing">
+                <h3> Tour:</h3>
+                <input id="tour" type="text" name="tour" size="10" maxlength="10">
+            </div>
+<div class="input-spacing">
+                <h3> Days Off:</h3>
+                <input id="offDays" type="text" name="offDays" size="10" maxlength="10">
+            </div>
+
+              <select name="veteranStatus" id="drop-down-menu">
+                <option value="none">Veteran Status</option>
+
+                <option value="Yes">Yes</option>
+
+                  <option value="NO">No</option>
+
+               </select>
+                <select name="layoffProtected" id="drop-down-menu">
+                   <option value="none">Layoff Protected</option>
+
+                   <option value="YES">Yes</option>
+
+                     <option value="NO">No</option>
+
+                  </select>
+                  <input id="submit" type="submit" value="Sign up">
 </form>
   </div>
 </body>
