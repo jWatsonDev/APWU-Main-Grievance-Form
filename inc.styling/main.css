@@ -10,7 +10,7 @@ div form h3{
   margin: 10px 10px;
 }
 div form div input{
-  margin: 10px 10px;
+  margin: 3px;
 }
 
 #mail-processed{
@@ -129,7 +129,6 @@ label {
   #drop-down-menu{
     display: block;
     width:250px;
-    margin: 10px 15px 15px 0px;
 
   }
   #address{
