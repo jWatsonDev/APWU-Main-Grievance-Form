@@ -24,6 +24,9 @@ div form div input{
 .employeeID{
   display: inline-block;
 }
+.password{
+  display: inline-block;
+}
 
 
 .error {
@@ -56,7 +59,7 @@ p#brand {
     display: inline-block;
     width: 47%;
 }
-#log-in{
+#signUp{
   text-align: right;
   display: inline-block;
 width: 47%;
