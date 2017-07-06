@@ -12,14 +12,13 @@ header {
     margin: 0 auto;
     padding: 10px;
 }
-div form h3{
+.signIn{
   text-align: center;
-
 }
 div form div input{
-  margin: 0 auto;
+
   text-align: center;
-  display: block;
+  display: inline-block;
 
 }
 .employeeID{
@@ -40,29 +39,13 @@ div form div input{
     margin: 0 auto;
 }
 
-.success {
-    z-index: 1000;
-    height: 100%;
-    text-align: center;
-    color: #4a8413;
-    background: white;
-}
 
-#drop-down-menu {
-  display:block;
-  width: 250px;
-  padding: 5px 5px;
-  margin: 20px auto;
-}
 
-.close {
-    font-family: sans-serif;
-    text-decoration: none;
-    font-weight: bolder;
-}
+
 
 .input-spacing {
-    margin-bottom: 10px;
+  text-align: center;
+    margin:10px auto;
 }
 
 
