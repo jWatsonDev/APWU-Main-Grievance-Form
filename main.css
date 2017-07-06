@@ -71,15 +71,16 @@ width: 47%;
 color: white;
 font-size: 1.2em;
 margin: 0 auto;
+
 }
-a:link {
+p a:link {
   color:white;
   text-decoration: none;
 }
-a:visited{
+p a:visited{
   color:white;
 }
-a:active{
+p a:active{
   color: white;
 }
 div#form-border {
