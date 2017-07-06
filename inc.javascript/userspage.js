@@ -52,7 +52,6 @@ $(document).ready(function () {
 
 if(errors){
 
-  $(".warnings").show("slow").fadeOut(5000);
 
   return false;
 }
@@ -60,7 +59,7 @@ if(errors){
 // If no errors show success message
 
   if(!errors){
-                $( "#submit" ).click(function(  ) {
+                $( "#submit" ).click(function() {
 
 
 });

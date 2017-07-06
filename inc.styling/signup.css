@@ -5,6 +5,13 @@ body {
     height: 100%;
     margin: 0 auto;
 }
+header {
+    width: 100%;
+    background-color: #003399;
+    height: inherit;
+    margin: 0 auto;
+    padding: 10px;
+}
 div form h3{
   text-align: center;
 
@@ -17,13 +24,6 @@ div form div input{
 }
 
 
-header {
-    width: 100%;
-    background-color: #003399;
-    height: 50px;
-    margin: 0 auto;
-    padding: 10px;
-}
 
 .error {
     color: #ff5c5c;
