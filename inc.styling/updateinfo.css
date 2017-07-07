@@ -51,10 +51,10 @@ p a:visited{
 p a:active{
   color: white;
 }
-@media (max-width:620px) {
+@media (max-width:640px) {
   .nav-link-clear{
     width: 50%;
-    margin-right: 0;
+    margin-right:30px;
   }
   #file-grievance{
     padding-left: 0px;
@@ -64,5 +64,8 @@ p a:active{
   #file-grievance{
     width: auto;
     margin-bottom: 5px;
+  }
+.nav-link-clear{
+    margin-right: 0;
   }
 }

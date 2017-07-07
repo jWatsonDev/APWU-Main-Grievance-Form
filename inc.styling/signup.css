@@ -12,6 +12,9 @@ header {
     margin: 0 auto;
     padding: 10px;
 }
+div form h1{
+  text-align: center;
+}
 div form h3{
   text-align: center;
 
@@ -130,12 +133,13 @@ label {
     height: 100%;
 }
 
-@media (max-width:600px){
+@media (max-width:640px){
   #drop-down-menu{
     display: block;
     width:250px;
 
   }
+
   #address{
     width: 180px;
   }
