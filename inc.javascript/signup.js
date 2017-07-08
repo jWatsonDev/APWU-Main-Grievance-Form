@@ -79,6 +79,20 @@ $(document).ready(function () {
           errors = true;
         }
 
+        if ($('#passwordField1').val()==="") {
+          $('#password1-error').show("slow");
+          errors = true;
+        }
+        if ($('input[name=password1]').val() === "") {
+          $("#password2-error").show("slow");
+          errors = true;
+        }
+        if ($('input[name=password2]').val().length !== 0 &&
+        $('input[name=password2]').val() !== $('input[name=password1]').val()) {
+          $('#password2-error').html("Password fields must contain the same password").show();
+          errors = true;
+        }
+
 
 
 
