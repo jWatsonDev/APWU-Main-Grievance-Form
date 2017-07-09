@@ -95,17 +95,9 @@ p a:visited{
 p a:active{
   color: white;
 }
-div#form-border {
-    margin: 20px 0 25px 10px;
-}
-
-
-
 label {
     font: bold;
 }
-
-
 #submit {
   display: block;
     margin:20px auto;
