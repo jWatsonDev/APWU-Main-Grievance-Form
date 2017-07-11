@@ -77,19 +77,25 @@ $(document).ready(function () {
         if ($(".layOffProtected").val() === "none") {
           $("#layOffProtected-error").show("slow");
           errors = true;
-        }
+            }
+        if ($('#email-address1').val()==="") {
+            $('#email1-error').show("slow");
+                errors = true;
+                }
 
-        if ($('#passwordField1').val()==="") {
-          $('#password1-error').show("slow");
-          errors = true;
-        }
+        if ( $('#email-address1').val() !== $('#email-address2').val()) {
+              $('#email2-error').show("slow");
+                errors = true;
+                }
+        if ($('#passwordField1').val() === "") {
+            $('#password1-error').show("slow");
+                errors = true;
+                }
 
         if ( $('input[name=password2]').val() != $('input[name=password1]').val()) {
-          $('#password2-error').show("slow");
-          errors = true;
-        }
-
-
+              $('#password2-error').show("slow");
+                errors = true;
+                }
 
 
  //If there are errors then show a general error message
@@ -113,11 +119,10 @@ if(errors){
                     return true;
                       }
 
- });        //Make the Close window button work
+ });
+ //Make the Close window button work
                     $(".close").click(function() {
         $(".overlay").fadeOut();
-
-
-            });
+       });
 
 });
