@@ -18,13 +18,13 @@ http://php.net/manual/en/function.password-hash.php
 <<<<
 Must learn about password encryption before sql table completion.
 CREATE TABLE userAccounts (
-	employeeID int(8) PRIMARY KEY NOT null,
+
 	emailAddress varchar(128) NOT null,
 	PASSWORD varchar(128) NOT null
 	);
 
 	CREATE TABLE UserSignUp (
-		employeeID int,
+		employeeID int(8) PRIMARY KEY NOT null,
 		fullName varchar(128) NOT null,
 	    employeeType varchar(28) NOT null,
 	    address varchar(128) NOT null,
@@ -39,7 +39,6 @@ CREATE TABLE userAccounts (
 	    daysOff varchar(28) NOT null,
 	    veteranStatus varchar(10) NOT null,
 	    layOffProtected varchar(10) NOT null,
-	    FOREIGN KEY(employeeID) REFERENCES userAccounts(employeeID),
 		id int(11) PRIMARY KEY AUTO_INCREMENT NOT null);
 
 			CREATE TABLE filedGrievances (

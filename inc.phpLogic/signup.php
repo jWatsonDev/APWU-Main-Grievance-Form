@@ -8,7 +8,7 @@ $address = $_POST['address'];
 $city = $_POST['city'];
 $state = $_POST['state'];
 $zipCode = $_POST['zipCode'];
-$phoneNumber = $_POST['phone'];
+$phone = $_POST['phone'];
 $seniority = $_POST['seniority'];
 $payStatus = $_POST['payLevel'];
 $payStep = $_POST['payStep'];
@@ -30,7 +30,7 @@ $stmt->bindValue(1,$employeeID);
 $stmt->bindValue(2,$email);
 $stmt->bindValue(3,$hash);
 $stmt->execute();
-$stmtSignUpInfo = $conn->prepare("INSERT INTO UserSignUp(fullName , employeeType , address, city , state, zipcode, phoneNumber,
+$stmtSignUpInfo = $conn->prepare("INSERT INTO UserSignUp (fullName , employeeType , address, city , state, zipcode, phoneNumber,
 seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 $stmtSignUpInfo->bindValue(1, $fullName);
 $stmtSignUpInfo->bindValue(2, $employeeType);
@@ -38,7 +38,7 @@ $stmtSignUpInfo->bindValue(3, $address);
 $stmtSignUpInfo->bindValue(4, $city);
 $stmtSignUpInfo->bindValue(5, $state);
 $stmtSignUpInfo->bindValue(6, $zipCode);
-$stmtSignUpInfo->bindValue(7, $phoneNumber);
+$stmtSignUpInfo->bindValue(7, $phone);
 $stmtSignUpInfo->bindValue(8,$seniority);
 $stmtSignUpInfo->bindValue(9, $payStatus);
 $stmtSignUpInfo->bindValue(10, $payStep);
