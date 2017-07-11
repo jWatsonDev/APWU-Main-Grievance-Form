@@ -25,10 +25,10 @@ $hash = password_hash($password, PASSWORD_DEFAULT);
 /*$sqlQueryCreateAccount = "INSERT INTO userAccounts (employeeID, emailAddress, PASSWORD) VALUES (?,?,?)";
 $sqlQueryUserSignUp = "INSERT INTO UserSignUp(fullName , employeeType , address, city , state, zipcode, phoneNumber,
 seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; */
-$stmt = $conn->prepare("INSERT INTO userAccounts (employeeID, emailAddress, PASSWORD) VALUES (?,?,?)");
-$stmt->bindValue(1,$employeeID);
-$stmt->bindValue(2,$email);
-$stmt->bindValue(3,$hash);
+$stmt = $conn->prepare("INSERT INTO userAccounts ( emailAddress, PASSWORD) VALUES (?,?,?)");
+
+$stmt->bindValue(1,$email);
+$stmt->bindValue(2,$hash);
 $stmt->execute();
 $stmtSignUpInfo = $conn->prepare("INSERT INTO UserSignUp (fullName , employeeType , address, city , state, zipcode, phoneNumber,
 seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
