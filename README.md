@@ -6,6 +6,7 @@ Learning PHP 7
 Learning PHP, MySQL, JavaScript,
 CSS & HTML5
 Pro PHP and jQuery
+http://php.net/manual/en/pdo.prepared-statements.php
 https://stackoverflow.com/questions/10908561/mysql-meaning-of-primary-key-unique-key-and-key-when-used-together-whil
 https://geeksww.com/tutorials/database_management_systems/mysql/tips_and_tricks/mysql_primary_key_vs_unique_key_constraints.php
 https://stackoverflow.com/questions/16200254/best-way-to-use-pdo-in-procedural-environment
