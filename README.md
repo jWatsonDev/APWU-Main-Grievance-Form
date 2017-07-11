@@ -39,7 +39,7 @@ CREATE TABLE userAccounts (
 	    daysOff varchar(28) NOT null,
 	    veteranStatus varchar(10) NOT null,
 	    layOffProtected varchar(10) NOT null,
-		id int(11) PRIMARY KEY AUTO_INCREMENT NOT null);
+		id int(11) AUTO_INCREMENT NOT null);
 
 			CREATE TABLE filedGrievances (
 				id int,
