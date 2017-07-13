@@ -122,25 +122,28 @@ if(errors){
 
  });*/
  //Make the Close window button work
- $(".create-account").on("click", function () {
- 	$(".overlay").fadeIn("slow");
- 	$(".registration-form").fadeIn("slow");
- 	$('html, body').css({
- 		overflow: 'hidden',
- 		height: '100%'
- 	});
- });
 
-
- $( '.overlay').on('click', function(event) {
- 	$(".overlay, .registration-form").fadeOut("slow");
- 	$('html, body').css({
- 		overflow: 'auto',
- 		height: 'auto'
- 	});
- });
             /*        $(".close").click(function() {
         $(".overlay").fadeOut();
        });
 */
+});
+$(".create-account").on("click", function () {
+ $(".overlay").fadeIn("slow");
+ $(".registration-form").fadeIn("slow");
+ $('html, body').css({
+   overflow: 'hidden',
+   height: '100%'
+ });
+});
+
+
+$( '.overlay').on('click', function(event) {
+ $(".overlay, .registration-form").fadeOut("slow");
+ $('html, body').css({
+   overflow: 'auto',
+   height: 'auto'
+ });
+});
+
 });
