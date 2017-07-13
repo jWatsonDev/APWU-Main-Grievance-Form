@@ -1,22 +1,35 @@
 # APWU-Main-Grievance-Form
 This grievance form is for the multitude of union stewards who are having problems filing and keeping track of grievances forms.
 In making this all grievances can be kept track of electronically and the APWU will become more green organization.
+
 Resources:
+
 Learning PHP 7
+
 Learning PHP, MySQL, JavaScript,
+
 CSS & HTML5
+
 Pro PHP and jQuery
+
 http://php.net/manual/en/pdo.prepared-statements.php
+
 https://stackoverflow.com/questions/10908561/mysql-meaning-of-primary-key-unique-key-and-key-when-used-together-whil
+
 https://geeksww.com/tutorials/database_management_systems/mysql/tips_and_tricks/mysql_primary_key_vs_unique_key_constraints.php
+
 https://stackoverflow.com/questions/16200254/best-way-to-use-pdo-in-procedural-environment
+
 https://stackoverflow.com/questions/17408605/mysqli-procedural-vs-pdo
+
 https://stackoverflow.com/a/14112684/285587
 
 SQL code for table creation no longer relevant. Will update when signup.html and userspage.html are complete.
+
 http://php.net/manual/en/function.password-hash.php
 <<<<
 Must learn about password encryption before sql table completion.
+
 CREATE TABLE userAccounts (
 	id int(11) PRIMARY KEY AUTO_INCREMENT NOT null,
 	emailAddress varchar(128) NOT null,
