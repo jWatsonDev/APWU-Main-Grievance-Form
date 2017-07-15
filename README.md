@@ -4,8 +4,6 @@ In making this all grievances can be kept track of electronically and the APWU w
 
 Resources:
 
-Make an E-commerce Site in a Weekend Using PHP
-
 Learning PHP 7
 
 Learning PHP, MySQL, JavaScript,
@@ -31,9 +29,9 @@ SQL code for table creation no longer relevant. Will update when signup.html and
 http://php.net/manual/en/function.password-hash.php
 <<<<
 Must learn about password encryption before sql table completion.
-
-CREATE DATABASE grievanceInfo;
+CREATE Database grievanceInfo;
 USE grievanceInfo;
+
 CREATE TABLE userAccounts (
 
 	id int(11) PRIMARY KEY AUTO_INCREMENT NOT null,
@@ -44,14 +42,14 @@ CREATE TABLE userAccounts (
 	);
 
 	CREATE TABLE UserSignUp (
-		id int,
-		employeeID int(8) PRIMARY KEY NOT null,
+			userAccounts_id int(11) not null,
+			employeeID int(8) PRIMARY KEY NOT null,
 	    employeeType varchar(28) NOT null,
 	    address varchar(128) NOT null,
 	    city varchar(28) NOT null,
 	    state varchar(28) NOT null,
 	    zipcode int(10) NOT null,
-	    phoneNumber int(10) NOT null,
+	    phoneNumber varchar(10) NOT null,
 	    seniorityDate varchar(10) NOT null,
 	    payLevel varchar(10) NOT null,
 	    payStep varchar(10) NOT null,
@@ -59,12 +57,12 @@ CREATE TABLE userAccounts (
 	    daysOff varchar(28) NOT null,
 	    veteranStatus varchar(10) NOT null,
 	    layOffProtected varchar(10) NOT null,
-			FOREIGN KEY(id) REFERENCES userAccounts(id)
+			CONSTRAINT fk_userAccounts FOREIGN KEY(userAccounts_id) REFERENCES userAccounts(id)
 		);
 
 			CREATE TABLE filedGrievances (
 
-	      employeeID int,
+	      employeeID_ref int(8) not null,
 				id int(11) PRIMARY KEY AUTO_INCREMENT NOT null,
 				date varchar(10) NOT null,
 				machineNumber int(3) NOT null,
@@ -76,6 +74,6 @@ CREATE TABLE userAccounts (
 				timeHelpSweptMachine varchar(10),
 				hoursWorkedAlone int(2) NOT null,
 				minutesWorkedAlone int(2),
-				FOREIGN KEY(employeeID) REFERENCES UserSignUp(employeeID)
+				CONSTRAINT fk_UserSignUp FOREIGN KEY(employeeID_ref) REFERENCES UserSignUp(employeeID)
 
 				)

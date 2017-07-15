@@ -19,6 +19,7 @@ $veteran = $_POST['veteranStatus'];
 $layOffProtected = $_POST['layOffProtected'];
 $email = $_POST['email1'];
 $password = $_POST['password1'];
+$last_id = $conn->lastInsertId();
 /* $options = [
     'cost' => 10,
 ]; Used to shorten execution time to under 100 millisection values 8 - 12 normally*/
@@ -28,17 +29,20 @@ $sqlQueryUserSignUp = "INSERT INTO UserSignUp(fullName , employeeType , address,
 seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; */
 $conn->beginTransaction();
 try{
-$stmt = $conn->prepare("INSERT INTO userAccounts ( fullName,emailAddress, PASSWORD) VALUES (?,?,?)");
+$stmt = $conn->prepare("INSERT INTO userAccounts ( fullName ,emailAddress, PASSWORD) VALUES (?,?,?)");
 
 $stmt->bindValue(1,$fullName);
 $stmt->bindValue(2,$email);
 $stmt->bindValue(3,$hash);
 $stmt->execute();
-
+/*
 $stmtCreateUnique = $conn->prepare("CREATE TABLE ".$employeeID."Grievances like filedGrievances");
 $stmtCreateUnique->execute();
-$stmtSignUpInfo = $conn->prepare("INSERT INTO UserSignUp (employeeID , employeeType , address, city , state, zipcode, phoneNumber,
+*/
+$stmtSignUpInfo = $conn->prepare("INSERT INTO UserSignUp (  employeeID , employeeType , address, city , state, zipcode, phoneNumber,
 seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+
 $stmtSignUpInfo->bindValue(1, $employeeID);
 $stmtSignUpInfo->bindValue(2, $employeeType);
 $stmtSignUpInfo->bindValue(3, $address);
@@ -53,19 +57,16 @@ $stmtSignUpInfo->bindValue(11, $tour);
 $stmtSignUpInfo->bindValue(12, $daysOff);
 $stmtSignUpInfo->bindValue(13, $veteran);
 $stmtSignUpInfo->bindValue(14, $layOffProtected);
+
 $stmtSignUpInfo->execute();
 var_dump($_POST);
-if(!$stmtSignUpInfo->execute()) {
-throw new Exception($statement->errorInfo()[2]);
-$conn->rollBack();
-}
+var_dump($last_id);
 $conn->commit();
 }
 
 
 catch(PDOException $e) {
-    echo var_dump(PDOException)
-   echo "We have an error"."<br>";
+  echo "We have an error"."<br>";
   echo $e->getMessage()."<br>";
   $conn->rollBack();
 
