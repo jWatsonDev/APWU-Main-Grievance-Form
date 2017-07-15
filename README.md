@@ -32,7 +32,8 @@ http://php.net/manual/en/function.password-hash.php
 <<<<
 Must learn about password encryption before sql table completion.
 
-
+CREATE DATABASE grievanceInfo;
+USE grievanceInfo;
 CREATE TABLE userAccounts (
 
 	id int(11) PRIMARY KEY AUTO_INCREMENT NOT null,
