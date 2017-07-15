@@ -4,6 +4,8 @@ In making this all grievances can be kept track of electronically and the APWU w
 
 Resources:
 
+Make an E-commerce Site in a Weekend Using PHP
+
 Learning PHP 7
 
 Learning PHP, MySQL, JavaScript,
