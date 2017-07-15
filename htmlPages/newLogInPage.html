@@ -57,7 +57,7 @@
 
 
 <!--START OF FORM - tabbed left for spacing-->
-<form id="sign-up-form" method="#" action="#">
+<form id="sign-up-form" method="post" action="../inc.phpLogic/signup.php">
   <h3 class="center-text">APWU Grievance Reporting System
     <br>Registration Form - Create Your Profile</h3><br>
   <div class="row"> <!--FORM ROW-->
@@ -100,7 +100,7 @@
     </div>
     <div class="three columns">
       <label for="zip">Zip Code</label>
-      <input id="zipCode" type="text" name="zipCode" class="u-full-width" maxlength="25">
+      <input id="zipCode" type="number" name="zipCode" class="u-full-width" maxlength="25">
       <div class="error" id = "zipCode-error">Zip-Code field required</div>
     </div>
   </div> <!--END ROW-->
@@ -110,7 +110,7 @@
 
     <div class="input-spacing">
       <h3> Employee ID:</h3>
-      <input id="eid" type="text" name="eid" size="8" maxlength="8">
+      <input id="eid" type="number" name="eid" size="8" maxlength="8">
     </div>
     <div class="error" id = "eid-error">Employee ID field required</div>
     <div class="input-spacing">
@@ -138,7 +138,7 @@
 
     <div class="input-spacing">
       <h3> Tour:</h3>
-      <input id="tour" type="text" name="tour" size="10" maxlength="10">
+      <input id="tour" type="number" name="tour" size="10" maxlength="10">
     </div>
     <div class="error" id = "tour-error">Tour field required</div>
 

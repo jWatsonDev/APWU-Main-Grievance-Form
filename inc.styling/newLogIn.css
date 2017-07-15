@@ -31,10 +31,12 @@ form div {
 .border {
 
 }
-form {
+.sign-up-form {
   padding-top: 9%;
 }
-
+form .signUpAccountInfoForm{
+  padding-top: 0%;
+}
 .right {
   float: right;
 }
