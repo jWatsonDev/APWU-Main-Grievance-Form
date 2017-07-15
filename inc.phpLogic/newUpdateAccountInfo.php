@@ -43,7 +43,6 @@ echo var_dump($_POST)."<br>";
 
 
 catch(PDOException $e) {
-  echo var_dump(PDOException);
    echo "We have an error"."<br>";
   echo $e->getMessage()."<br>";
 
