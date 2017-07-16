@@ -56,6 +56,7 @@ CREATE TABLE userAccounts (
 	    daysOff varchar(28) NOT null,
 	    veteranStatus varchar(10) NOT null,
 	    layOffProtected varchar(10) NOT null,
+			emailAddress varchar(128) NOT null
 
 		);
 
@@ -72,6 +73,6 @@ CREATE TABLE userAccounts (
 				timeHelpReceieved varchar(10) ,
 				timeHelpSweptMachine varchar(10),
 				hoursWorkedAlone int(2) NOT null,
-				minutesWorkedAlone int(2),
+				minutesWorkedAlone int(2)
 
 				)
