@@ -40,7 +40,7 @@ $stmtCreateUnique = $conn->prepare("CREATE TABLE ".$employeeID."Grievances like 
 $stmtCreateUnique->execute();
 */
 $stmtSignUpInfo = $conn->prepare("INSERT INTO UserSignUp (  employeeID , employeeType , address, city , state, zipcode, phoneNumber,
-seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected, emailAddress) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
 
 $stmtSignUpInfo->bindValue(1, $employeeID);
@@ -57,6 +57,7 @@ $stmtSignUpInfo->bindValue(11, $tour);
 $stmtSignUpInfo->bindValue(12, $daysOff);
 $stmtSignUpInfo->bindValue(13, $veteran);
 $stmtSignUpInfo->bindValue(14, $layOffProtected);
+$stmtSignUpInfo->bindValue(15, $email);
 
 $stmtSignUpInfo->execute();
 
