@@ -19,7 +19,7 @@ $veteran = $_POST['veteranStatus'];
 $layOffProtected = $_POST['layOffProtected'];
 $email = $_POST['email1'];
 $password = $_POST['password1'];
-$last_id = $conn->lastInsertId();
+
 /* $options = [
     'cost' => 10,
 ]; Used to shorten execution time to under 100 millisection values 8 - 12 normally*/
@@ -40,7 +40,7 @@ $stmtCreateUnique = $conn->prepare("CREATE TABLE ".$employeeID."Grievances like 
 $stmtCreateUnique->execute();
 */
 $stmtSignUpInfo = $conn->prepare("INSERT INTO UserSignUp (  employeeID , employeeType , address, city , state, zipcode, phoneNumber,
-seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected, emailAddress) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
 
 $stmtSignUpInfo->bindValue(1, $employeeID);
@@ -57,10 +57,10 @@ $stmtSignUpInfo->bindValue(11, $tour);
 $stmtSignUpInfo->bindValue(12, $daysOff);
 $stmtSignUpInfo->bindValue(13, $veteran);
 $stmtSignUpInfo->bindValue(14, $layOffProtected);
+$stmtSignUpInfo->bindValue(15, $email);
 
 $stmtSignUpInfo->execute();
-var_dump($_POST);
-var_dump($last_id);
+
 $conn->commit();
 }
 

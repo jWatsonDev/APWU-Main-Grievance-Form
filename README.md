@@ -34,15 +34,14 @@ USE grievanceInfo;
 
 CREATE TABLE userAccounts (
 
-	id int(11) PRIMARY KEY AUTO_INCREMENT NOT null,
 	fullName varchar(128) NOT null,
 	emailAddress varchar(128) NOT null,
-	PASSWORD varchar(128) NOT null
-
+	PASSWORD varchar(128) NOT null,
+	PRIMARY KEY(emailAddress)
 	);
 
 	CREATE TABLE UserSignUp (
-			userAccounts_id int(11) not null,
+
 			employeeID int(8) PRIMARY KEY NOT null,
 	    employeeType varchar(28) NOT null,
 	    address varchar(128) NOT null,
@@ -57,13 +56,14 @@ CREATE TABLE userAccounts (
 	    daysOff varchar(28) NOT null,
 	    veteranStatus varchar(10) NOT null,
 	    layOffProtected varchar(10) NOT null,
-			CONSTRAINT fk_userAccounts FOREIGN KEY(userAccounts_id) REFERENCES userAccounts(id)
+			emailAddress varchar(128) NOT null
+
 		);
 
 			CREATE TABLE filedGrievances (
 
-	      employeeID_ref int(8) not null,
 				id int(11) PRIMARY KEY AUTO_INCREMENT NOT null,
+	      employeeID int(8) not null,			
 				date varchar(10) NOT null,
 				machineNumber int(3) NOT null,
 				timeAlone varchar(28) NOT null,
@@ -73,7 +73,6 @@ CREATE TABLE userAccounts (
 				timeHelpReceieved varchar(10) ,
 				timeHelpSweptMachine varchar(10),
 				hoursWorkedAlone int(2) NOT null,
-				minutesWorkedAlone int(2),
-				FOREIGN KEY(employeeID_ref) REFERENCES UserSignUp(employeeID)
+				minutesWorkedAlone int(2)
 
 				)
