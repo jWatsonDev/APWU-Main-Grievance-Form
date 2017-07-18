@@ -1,9 +1,15 @@
 .center-text {
   text-align: center;
 }
+.logo-header{
+  text-align: center;
+}
 .center {
   display: block;
   margin: auto;
+}
+.m_p{
+  margin-top: 6%;
 }
 .wrapper-before-sf {
   box-sizing: border-box !important;

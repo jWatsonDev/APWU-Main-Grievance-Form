@@ -10,18 +10,18 @@
     <title>APWU Grievances</title>
 
     <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="inc.javascript/userspage.js">
+    <script type="text/javascript" src="../inc.javascript/userspage.js">
     </script>
 
-    <link rel="stylesheet" href="inc.styling/main.css">
+    <link rel="stylesheet" href="../inc.styling/main.css">
 
 </head>
 <header>
 
     <p id="brand">APWU Grievance Form</p>
     <div class="nav-link-clear">
-    <p id="update-account-info"><a href="updateaccountinfo.html">Update Account Info</a></p>
-    <p id="log-out"><a href= "">Log out</a></p>
+    <button id="update-account-info"><a href="updateaccountinfo.html">Update Account Info</a></button>
+    <button id="log-out"><a href= "newLogInPage.html">Log out</a></button>
   </div>
 </header>
 
@@ -30,7 +30,7 @@
 
 
     <div id="form-border">
-        <form id="userPageForm" action="inc.phpLogic/user.php" method="POST">
+        <form id="userPageForm" action="../inc.phpLogic/user.php" method="POST">
 
             <div class="input-spacing">
                 <h3>Date of Grievance (mm/dd/yy):</h3>
