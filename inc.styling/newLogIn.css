@@ -1,4 +1,26 @@
-.center-text {
+/* Mobile first queries */
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+  .b_c{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+  .s_l{
+    list-style-type: none;
+    display: flex;
+    width: 80%;
+  }
+  li{
+    flex: 1;
+
+  }
+}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  .center-text {
   text-align: center;
 }
 .logo-header{
@@ -18,9 +40,24 @@
 .s_m{
   margin: 0 auto;
 }
+.fa{
+  color: #0b6dd2
+}
 .wrapper-before-sf {
   box-sizing: border-box !important;
   min-height: calc(100vh - 50px);
+}
+.s_f{
+text-align: center;
+}
+.b_c{
+  position: fixed;
+  width:20%;
+  top: 0;
+  left: 0;
+}
+.s_l{
+  list-style-type: none;
 }
 .sticky-footer {
   height: 50px;
@@ -100,4 +137,5 @@ div.overlay {
 
 .error {
   display: none;
+}
 }
