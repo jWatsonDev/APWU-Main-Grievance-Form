@@ -1,7 +1,4 @@
-/* Mobile first queries */
 
-/* Larger than mobile */
-@media (min-width: 400px) {
   .b_c{
     position: fixed;
     bottom: 0;
@@ -9,17 +6,12 @@
   }
   .s_l{
     list-style-type: none;
-    display: flex;
     width: 80%;
   }
   li{
-    flex: 1;
+  
 
   }
-}
-
-/* Larger than phablet */
-@media (min-width: 550px) {
   .center-text {
   text-align: center;
 }
@@ -137,5 +129,4 @@ div.overlay {
 
 .error {
   display: none;
-}
 }
