@@ -20,68 +20,67 @@
     <link rel="stylesheet" href="../inc.styling/newLogIn.css">
 
 </head>
-<div class="u-cf">
-<button class="button u-pull-right"><a href="updateaccountinfo.html">Update Account Info</a></button>
+
+<button class="button u-pull-right"><a href="newUpdateAccountInfo.html">Update Account Info</a></button>
 <button class="button u-pull-right"><a href= "newLogInPage.html">Log out</a></button>
-</div>
-<div class="container ">
+
+<div class="container u-cf">
   <div class="logo-header">
 <div class="apwuMainLogo"><img alt="APWU" class="" src="cs_logo_apwu.png"></img>
 <h3 class="center-text">Enter grievance information here.</h3>
 </div>
 </div>
 
-        <form id="userPageForm" action="../inc.phpLogic/user.php" method="POST">
+        <form id="userPageForm" action="../inc.phpLogic/fileGrievance.php" method="POST">
 
-<div class="row">
-            <div class="six columns">
+          <label> Employee ID:</label>
+          <input id="eid" type="text" name="eid" size="8" maxlength="8">
+
+          <div class="error" id = "eid-error">Employee ID field required</div>
+
+
                 <label>Date of Grievance (mm/dd/yy):</label>
-                <input id="grievance-date" class="u-full-width" type="date" name="grievance-date" size="10" maxlength="10">
+                <input id="grievance-date" type="date" name="grievance-date" size="10" maxlength="10">
 
              <div class="error" id="grievanceDateError">Grievance date required</div>
-           </div>
-             <div class="six columns">
+
+
              <label>I worked alone from (Example: 11:45pm until 1:20am)</label>
-             <input id="time-alone" class="u-full-width" type="text" name="timeAlone" size="20" maxlength="28">
+             <input id="time-alone" type="text" name="timeAlone" size="20" maxlength="28">
 
            <div class="error" id="timeAlone">Must provide time worked alone</div>
-            </div>
-</div>
-<div class="row">
-          <div class="six columns ">
+
+
+
                 <label> Machine Number</label>
                 <input id="machine" type="text" name="machine" size="40" maxlength="10">
 
             <div class="error" id="machineNum">Machine # required</div>
-          </div>
-            <div class="six columns">
+
+
               <label class="m_p">I had to feed and sweep the machine myself
               <input id="radio-null" type="radio" name="radio" value="Yes"><span class="label-body">Yes</span><input id="radio-null2" type="radio" name="radio" value="No"><span class="label-body">No</span>
           </label>
           <div class="error" id="feedSweep">Did you feed and sweep?</div>
-          </div>
-
-      </div>
 
 
 
+<div class="s_m">
                 <label>SUPERVISORS NAME:</label>
                 <input id="supervisor" type="text" name="supervisor" size="28" maxlength="28">
 
               <div class="error" id="supervisor-error">Supervisor on duty required</div>
+            </div>
 
-
-
-
-                <label>I worked approximatedly <input id="mail-processed" type="number" name="mail-processed" size="5" maxlength="10"> <br>pieces of mail during the time I worked alone.</label>
+                <label>I worked approximatedly <input id="mail-processed" type="number" name="mail-processed" size="5" maxlength="10"> pieces of mail during the time I worked alone.</label>
                   <div class="error" id="mailProcessed">Pieces of mail processed required</div>
 <div class="row">
-              <div class="logo-header"><h2>Only complete field if you receieved help</h2></div>
+              <div class="w_m"><h2>Only complete field if you receieved help</h2>
                 <label>I did receive help at approximately <input id="time-helped" type="text" name="time-helped" size="5" maxlength="10">
                   this person only swept the machine which took about
                   <input id="time-swept" type="number" name="time-swept" size="5" maxlength="10" placeholder="Minutes">
                   then I worked by myself again.</label>
-
+</div>
 
 </div>
                 <label>I worked alone for a total of <br><input id="hours-worked-alone" type="number" name="hours-worked-alone" size="2" maxlength="2" placeholder="Hours"> and <input id="minutes-worked-alone" type="number" name="minutes-worked-alone" size="5" maxlength="10" placeholder="Minutes"> <br> on the above date and machine.</label>
@@ -90,5 +89,5 @@
             <input id="submit" type="submit" value="Submit Grievance">
 
         </form>
-
+</div>
     </html>

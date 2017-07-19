@@ -29,7 +29,10 @@ SQL code for table creation no longer relevant. Will update when signup.html and
 http://php.net/manual/en/function.password-hash.php
 <<<<
 Must learn about password encryption before sql table completion.
+
+
 CREATE Database grievanceInfo;
+
 USE grievanceInfo;
 
 CREATE TABLE userAccounts (

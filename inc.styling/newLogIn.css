@@ -4,12 +4,19 @@
 .logo-header{
   text-align: center;
 }
+.w_m{
+  text-align: center;
+  background-color: red;
+}
 .center {
   display: block;
   margin: auto;
 }
 .m_p{
-  margin-top: 6%;
+  margin-top: 2%;
+}
+.s_m{
+  margin: 0 auto;
 }
 .wrapper-before-sf {
   box-sizing: border-box !important;
