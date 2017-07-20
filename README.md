@@ -31,6 +31,29 @@ http://php.net/manual/en/function.password-hash.php
 Must learn about password encryption before sql table completion.
 
 
+															******AGENDA*******
+
+											1.RegEx validation
+
+											2.Update info PHP validation/display database info
+
+											3.Sessions/Cookies
+
+											4.Sanitize Inputs to prevent SQL injections
+
+											5.Rewrite/Refactor code PHP/JavaScript/CSS files
+
+											6.Create admin login page to view and query grievances
+
+											7.Create success page or message upon grievance submission
+
+											8.Rewrite procedural PHP to Object Oriented PHP
+
+
+
+
+
+
 CREATE Database grievanceInfo;
 
 USE grievanceInfo;
