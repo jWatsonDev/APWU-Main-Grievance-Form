@@ -1,4 +1,25 @@
 # APWU-Main-Grievance-Form
+
+******AGENDA*******
+
+1.RegEx validation
+
+2.Update info PHP validation/display database info
+
+3.Sessions/Cookies
+
+4.Sanitize Inputs to prevent SQL injections
+
+5.Rewrite/Refactor code PHP/JavaScript/CSS files
+
+6.Create admin login page to view and query grievances
+
+7.Create success page or message upon grievance submission
+
+8.Rewrite procedural PHP to Object Oriented PHP
+
+
+
 This grievance form is for the multitude of union stewards who are having problems filing and keeping track of grievances forms.
 In making this all grievances can be kept track of electronically and the APWU will become more green organization.
 
@@ -29,25 +50,6 @@ SQL code for table creation no longer relevant. Will update when signup.html and
 http://php.net/manual/en/function.password-hash.php
 <<<<
 Must learn about password encryption before sql table completion.
-
-
-															******AGENDA*******
-
-											1.RegEx validation
-
-											2.Update info PHP validation/display database info
-
-											3.Sessions/Cookies
-
-											4.Sanitize Inputs to prevent SQL injections
-
-											5.Rewrite/Refactor code PHP/JavaScript/CSS files
-
-											6.Create admin login page to view and query grievances
-
-											7.Create success page or message upon grievance submission
-
-											8.Rewrite procedural PHP to Object Oriented PHP
 
 
 
