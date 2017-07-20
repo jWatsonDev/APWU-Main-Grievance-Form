@@ -11,8 +11,8 @@
     <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
 
 
-    <script type="text/javascript" src="../inc.javascript/newLogIn.js">
-    </script>
+  <!--  <script type="text/javascript" src="../inc.javascript/update_info.js">
+  </script>  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
 
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
@@ -36,6 +36,7 @@
 <input id="full-name" type="text" name="full-name" size="28" maxlength="128">
 
 <div class="error" id = "full-name-error">Full Name Required</div>
+<br>
         <select name="employeeStatus" id="drop-down-menu">
           <option value="none">Select Employee Type</option>
 
@@ -104,7 +105,7 @@
               <input id="daysOff" type="text" name="daysOff" size="10" maxlength="10">
 
           <div class="error" id = "daysOff-error">Days Off field required</div>
-
+<br>
             <select name="veteranStatus" class="veteranStatus" id="drop-down-menu">
               <option value="none">Veteran Status</option>
 
@@ -114,7 +115,7 @@
 
              </select>
              <div class="error" id = "veteranStatus-error">Veteran Status field required</div>
-
+<br>
               <select name="layOffProtected" class="layOffProtected" id="drop-down-menu">
                  <option value="none">Layoff Protected</option>
 
@@ -142,6 +143,7 @@
                 <div class="error" id = "password3-error">Passwords must match.</div>
 <br>
                 <input id="submit" type="submit" value="Update Info">
+                <div class="warnings">There were errors found in your submission</div>
 </form>
 </div>
 <footer class="sticky-footer"><p><small>&copy; 2017 American Postal Workers Union</a></small></p></footer>

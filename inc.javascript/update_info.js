@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
 
-    $("#sign-up-form").submit(function (event) {
+    $("#update-account-info-form").submit(function (event) {
 
 
 
@@ -93,9 +93,8 @@ $(document).ready(function () {
                 errors = true;
                 }
 
-        if ( $('input[name=password2]').val() != $('input[name=password1]').val()) {
-
-              $('#password2-error').show("slow");
+        if ( $('input[name=password2]').val() != $('input[name=password3]').val()) {
+              $('#password3-error').show("slow");
                 errors = true;
                 }
 

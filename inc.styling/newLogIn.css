@@ -8,10 +8,6 @@
     list-style-type: none;
     width: 80%;
   }
-  li{
-  
-
-  }
   .center-text {
   text-align: center;
 }
@@ -69,7 +65,9 @@ form div {
   margin: auto;
 
 }
-
+.warnings{
+  display: none;
+}
 .border {
 
 }
