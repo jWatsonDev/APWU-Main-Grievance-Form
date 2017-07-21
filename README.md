@@ -20,13 +20,14 @@
 8.Rewrite procedural PHP to Object Oriented PHP
 
 9.Use PHP Mailer to send emails to tour specific shop stewards
-
+ 
 10.Rewrite in laravel....
 
 This grievance form is for the multitude of union stewards who are having problems filing and keeping track of grievances forms.
 In making this all grievances can be kept track of electronically and the APWU will become more green organization.
 
 Resources:
+
 PHP for the Web: Visual Quick Start guide
 
 Learning PHP 7
@@ -105,6 +106,9 @@ CREATE TABLE userAccounts (
 				timeHelpReceieved varchar(10) ,
 				timeHelpSweptMachine varchar(10),
 				hoursWorkedAlone int(2) NOT null,
+				minutesWorkedAlone int(2)
+
+				)
 				minutesWorkedAlone int(2)
 
 				)
