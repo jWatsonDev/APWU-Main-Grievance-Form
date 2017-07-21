@@ -10,12 +10,12 @@ $password = $_POST['password1'];
 ]; Used to shorten execution time to under 100 millisection values 8 - 12 normally*/
 $hash = password_hash($password, PASSWORD_DEFAULT);
 
-try{
-$stmt = $conn->prepare("INSERT INTO userAccounts (fullName, emailAddress, PASSWORD) VALUES (?, ? , ?)");
-$stmt->bindValue(1,$fullName);
-$stmt->bindValue(2,$email);
-$stmt->bindValue(3,$hash);
-$stmt->execute();
+try {
+    $stmt = $conn->prepare("INSERT INTO userAccounts (fullName, emailAddress, PASSWORD) VALUES (?, ? , ?)");
+    $stmt->bindValue(1, $fullName);
+    $stmt->bindValue(2, $email);
+    $stmt->bindValue(3, $hash);
+    $stmt->execute();
 }
 catch(PDOException $e) {
    echo "We have an error"."<br>";
