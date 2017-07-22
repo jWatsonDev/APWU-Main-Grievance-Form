@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # APWU-Main-Grievance-Form
 
 ******AGENDA*******
@@ -20,7 +19,7 @@
 8.Rewrite procedural PHP to Object Oriented PHP
 
 9.Use PHP Mailer to send emails to tour specific shop stewards
- 
+
 10.Rewrite in laravel....
 
 This grievance form is for the multitude of union stewards who are having problems filing and keeping track of grievances forms.
@@ -109,8 +108,3 @@ CREATE TABLE userAccounts (
 				minutesWorkedAlone int(2)
 
 				)
-				minutesWorkedAlone int(2)
-
-				)
-=======
->>>>>>> d4ee826025e987b3858174306818c70d1887706f
