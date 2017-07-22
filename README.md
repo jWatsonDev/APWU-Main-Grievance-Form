@@ -26,6 +26,7 @@ This grievance form is for the multitude of union stewards who are having proble
 In making this all grievances can be kept track of electronically and the APWU will become more green organization.
 
 Resources:
+
 PHP for the Web: Visual Quick Start guide
 
 Learning PHP 7
