@@ -100,14 +100,9 @@ form div,
 
 .apwu-logo {
   position: absolute;
-  top: 15px;
-  right: 40px;
+  top: 50px;
+  right: 55px;
   z-index: -5 !important;
-  opacity: .3;
-}
-
-.button-container button {
-  text-align: left;
 }
 
 form {
@@ -163,6 +158,11 @@ a {
 
 .error {
   display: none;
+}
+
+.button-container button,
+.button-container .button {
+  text-align: left !important;
 }
 
 @media only screen and (max-width: 768px) {

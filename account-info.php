@@ -1,9 +1,45 @@
 <?php 
-// Display account info for each user
+include_once('connection.php');
+session_start();
 
-// Get the user id 
+// Check if session is established 
+if ($_SESSION['name']) {
+  $id = $_GET['id']; // Get id of user from url
+} else {
+  header('Location: login.php');
+}
 
-// Need to create UI for this
+// Query database for name and email from 
+$query = $handler->query("SELECT * FROM registration WHERE id = '$id'");
+$row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
+
+
+// UPDATE database - need to put in other file
+$adddress = $_POST['address'];
+$city = $_POST['city'];
+$state = $_POST['state'];
+$zip = $_POST['zip'];
+$phone = $_POST['phoneNumber'];
+$employeeId = $_POST['employeeId'];
+$seniorityDate = $_POST['seniorityDate'];
+$payStatusLevel = $_POST['payLevel'];
+$payStep = $_POST['payStep'];
+$tour = $_POST['tour'];
+$daysOff = $_POST['daysOff'];
+$veteranStatus = $_POST['veteran'];
+$layoffProtected = $_POST['layOffProtected'];
+
+try {
+  $stmt = $handler->prepare("INSERT INTO registration (full_name, email, password) VALUES (?, ? , ?)");
+  $stmt->bindValue(1, $fullName);
+  $stmt->bindValue(2, $email);
+  $stmt->bindValue(3, $hashedPassword);
+  $stmt->execute();
+  echo "Inserted";
+} catch (PDOException $e) {
+  echo "We have an error"."<br>";
+  echo $e->getMessage()."<br>";
+}
 
 ?>
 
@@ -21,14 +57,14 @@
   <body>
     <div class="container">
       <div class="form-container">
-        <img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo">
+        <img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px">
         <!--START OF FORM -->
         <form id="sign-up-form" method="#" action="#">
-          <h3 style="margin-left: 85px">John Doe - Profile</h3><br>
+          <h3 style="margin-left: 85px"><?php echo $row->full_name; ?> - Profile</h3><br>
           <div class="row"> <!--FORM ROW--> 
             <div class="eight columns">
               <label for="fullName">Full Name</label>
-              <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128">
+              <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128" value="<?php echo $row->full_name; ?>">
             </div>
             <div class="error" id = "full-name-error">Full Name Required</div>
             <div class="four columns">
@@ -131,12 +167,12 @@
           <div class="row"> <!--FORM ROW--> 
             <div class="six columns">
               <label for="email">Email</label>
-              <input id="email-address1" type="email" name="email1" class="u-full-width" maxlength="120">
+              <input id="email-address1" type="email" name="email1" class="u-full-width" maxlength="120" value="<?php echo $row->email; ?>">
               <div class="error" id = "email1-error">Please enter a email address.</div>
             </div>
             <div class="six columns">
               <label for="email-confirm">Reenter Email</label>
-              <input id="email-address2" type="email" name="email2" class="u-full-width" maxlength="120">
+              <input id="email-address2" type="email" name="email2" class="u-full-width" maxlength="120" value="<?php echo $row->email; ?>">
               <div class="error" id = "email2-error">Please verify email address</div>
             </div>
           </div> <!--END ROW-->

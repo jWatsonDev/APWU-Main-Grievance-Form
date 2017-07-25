@@ -1,4 +1,32 @@
-<!DOCTYPE <!DOCTYPE html>
+<?php
+
+if (isset($_POST['submit'])) {
+  require_once('connection.php');
+  // If the submit button is clicked -> set post variables -> athenticate user
+  $email = $_POST['email'];
+  $password = trim($_POST['password']);
+  
+  $query = $handler->query("SELECT * FROM registration WHERE email = '$email'");
+  
+  $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
+  $hashedPassword = $row->password;
+
+  if(password_verify($password, $hashedPassword)) {
+    session_start();
+    $_SESSION['name'] = $row->full_name;
+    $_SESSION['id'] = $row->id;
+    header('Location: index.php');
+    echo $_SESSION['name'];
+  } else {
+    echo "You've entered an incorrect password.";
+  }
+}
+
+
+?>
+
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,10 +48,10 @@
            <span id="dividing-border"><span>
         </div>
         <div class="six columns border">
-          <form class="login">
-            <input type="text" placeholder="username" class="center">
-            <input type="password" placeholder="password" class="center">
-            <button class="center">LOGIN</button>
+          <form class="login" method="post" action="login.php">
+            <input type="text" placeholder="email address" name="email" class="center">
+            <input type="password" placeholder="password" name="password" class="center">
+            <button class="center" name="submit">LOGIN</button>
             <div>
               <span class="pull-left">
                 <small>Do not have an account?</small>
@@ -59,7 +87,7 @@
     <div class="registration-form">
     
     <!--START OF FORM - tabbed left for spacing-->
-    <form id="sign-up-form" method="#" action="#">
+    <form id="sign-up-form" method="post" action="register.php">
       <h3 class="center-text">APWU Grievance Reporting System
         <br>Registration Form - Create Your Profile</h3><br>
       <div class="row"> <!--FORM ROW--> 
