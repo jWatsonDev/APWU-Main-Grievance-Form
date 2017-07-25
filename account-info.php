@@ -14,12 +14,15 @@ $query = $handler->query("SELECT * FROM registration WHERE id = '$id'");
 $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
 
 // Query database for the rest of the acct information 
-$query = $handler->query("SELECT * FROM account_information WHERE registration_id = '$id'");
+$aiQuery = $handler->query("SELECT * FROM account_information WHERE registration_id = '$id'");
 $formAction = ''; 
-if ($query->fetch()) {
+
+$acctRow = '';
+if ($aiQuery->fetch()) {
   // If the row exists, store row in obj $acctRow
-  $acctRow = $query->fetch(PDO::FETCH_OBJ); // Store row in obj format 
-  $formAction = 'update-acct-info.php'; // Set form action to 
+  $aiQuery = $handler->query("SELECT * FROM account_information WHERE registration_id = '$id'");
+  $acctRow = $aiQuery->fetch(PDO::FETCH_OBJ); // Store row in obj format 
+  //$formAction = 'update-acct-info.php'; // Set form action to 
 } else {
   // If the query doesn't exist, process the form 
   $formAction = 'add-acct-info.php';
@@ -76,7 +79,7 @@ if (!$acctRow->total) {
           <div class="row"> <!--FORM ROW--> 
             <div class="twelve columns">
               <label for="address">Street Address</label>
-              <input id="address" type="text" name="address" maxlength="80" class="u-full-width">
+              <input id="address" type="text" name="address" maxlength="80" class="u-full-width" value="<?php echo (isset($acctRow->state) ? $acctRow->address : ''); ?>">
             <div class="error" id = "address-error">Address field required</div>
             </div>
           </div> <!--END ROW-->
@@ -84,35 +87,35 @@ if (!$acctRow->total) {
           <div class="row"> <!--FORM ROW--> 
             <div class="six columns">
               <label for="city">City</label>
-              <input id="city" type="text" name="city" maxlength="50" class="u-full-width">
+              <input id="city" type="text" name="city" maxlength="50" class="u-full-width" value="<?php echo (isset($acctRow->state) ? $acctRow->city : ''); ?>">
             <div class="error" id ="city-error">City field required</div>
             </div>
             <div class="three columns">
               <label for="state">State</label>
-              <input id="state" type="text" name="state" class="u-full-width" maxlength="25">
+              <input id="state" type="text" name="state" class="u-full-width" maxlength="25" value="<?php echo (isset($acctRow->state) ? $acctRow->state : ''); ?>">
               <div class="error" id = "state-error">State field required</div>
             </div>
             <div class="three columns">
               <label for="zip">Zip Code</label>
-              <input id="zipCode" type="text" name="zipCode" class="u-full-width" maxlength="25">
-              <div class="error" id = "zipCode-error">Zip-Code field required</div>
+              <input id="zipCode" type="text" name="zipCode" class="u-full-width" maxlength="25" value="<?php echo (isset($acctRow->state) ? $acctRow->zip_code : ''); ?>">
+              <div class="error" id = "zipCode-error" >Zip-Code field required</div>
             </div>
           </div> <!--END ROW-->
           
            <div class="row"> <!--FORM ROW--> 
             <div class="four columns">
               <label for="phone">Phone Number</label>
-              <input id="phone-number" type="text" name="phone" class="u-full-width" maxlength="11">
+              <input id="phone-number" type="text" name="phone" class="u-full-width" maxlength="11" value="<?php echo (isset($acctRow->state) ? $acctRow->phone_number : ''); ?>">
               <div class="error" id="phoneNumber-error">Phone Number field required</div>
             </div>
             <div class="four columns">
               <label for="employeeId">Employeee Id</label>
-              <input id="eid" type="text" name="eid" class="u-full-width" maxlength="8">
+              <input id="eid" type="text" name="eid" class="u-full-width" maxlength="8" value="<?php echo (isset($acctRow->state) ? $acctRow->employee_id : ''); ?>">
               <div class="error" id = "eid-error">Employee ID field required</div>
             </div>
             <div class="four columns">
               <label for="seniority">Seniority Date</label>
-              <input id="seniorityDate" type="date" name="seniority" maxlength="10" class="u-full-width">
+              <input id="seniorityDate" type="date" name="seniority" maxlength="10" class="u-full-width" value="<?php echo (isset($acctRow->state) ? $acctRow->seniority_date : ''); ?>">
               <div class="error" id = "seniorityDate-error">Seniority Date field required</div>
             </div>
           </div> <!--END ROW-->
@@ -120,17 +123,17 @@ if (!$acctRow->total) {
           <div class="row"> <!--FORM ROW--> 
             <div class="four columns">
               <label for="pay-status">Pay Status Level</label>
-              <input id="payLevel" type="text" name="payLevel" class="u-full-width" maxlength="10">
+              <input id="payLevel" type="text" name="payLevel" class="u-full-width" maxlength="10" value="<?php echo (isset($acctRow->state) ? $acctRow->pay_level : ''); ?>">
               <div class="error" id = "payLevel-error">Pay Level field required</div>
             </div>
             <div class="four columns">
               <label for="pay-step">Pay Step</label>
-              <input id="payStep" type="text" name="payStep" class="u-full-width" maxlength="10">
+              <input id="payStep" type="text" name="payStep" class="u-full-width" maxlength="10" value="<?php echo (isset($acctRow->state) ? $acctRow->pay_step : ''); ?>">
               <div class="error" id = "payStep-error">Pay Step field required</div>
             </div>
             <div class="four columns">
               <label for="tour">Tour</label>
-              <input id="tour" type="text" name="tour" class="u-full-width" maxlength="10">
+              <input id="tour" type="text" name="tour" class="u-full-width" maxlength="10" value="<?php echo (isset($acctRow->state) ? $acctRow->tour : ''); ?>">
               <div class="error" id = "tour-error">Tour field required</div>
             </div>
           </div> <!--END ROW-->
@@ -138,11 +141,11 @@ if (!$acctRow->total) {
           <div class="row"> <!--FORM ROW--> 
             <div class="four columns">
               <label for="days-off">Days Off</label>
-              <input id="daysOff" type="text" name="daysOff" maxlength="10" class="u-full-width">
+              <input id="daysOff" type="text" name="daysOff" maxlength="10" class="u-full-width" value="<?php echo (isset($acctRow->state) ? $acctRow->days_off : ''); ?>">
             </div>
             <div class="four columns">
               <label for="veteran-status">Veteran Status</label>
-              <select name="veteranStatus" class="veteranStatus u-full-width" id="drop-down-menu">
+              <select name="veteranStatus" class="veteranStatus u-full-width" id="drop-down-menu" value="<?php echo (isset($acctRow->state) ? $acctRow->veteran_status : ''); ?>">
                 <option value="Yes">Yes</option>
                 <option value="NO">No</option>
               </select>

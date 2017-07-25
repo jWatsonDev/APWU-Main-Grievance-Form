@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
   $daysOff = $_POST['daysOff'];
   $veteranStatus = $_POST['veteranStatus'];
   $layoffProtected = $_POST['layOffProtected'];
-  echo 'Inserted';
+  
   try {
     $stmt = $handler->prepare("INSERT INTO account_information (employee_type, address, city, state, zip_code, phone_number, employee_id, seniority_date, pay_level, pay_step, tour, days_off, veteran_status, layoff_protected, registration_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bindValue(1, $employeeType);
