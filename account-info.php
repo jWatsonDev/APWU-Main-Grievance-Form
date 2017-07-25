@@ -4,7 +4,7 @@ session_start();
 
 // Check if session is established 
 if ($_SESSION['name']) {
-  $id = $_GET['id']; // Get id of user from url
+  $id = $_SESSION['id']; // Get id of user from url
 } else {
   header('Location: login.php');
 }
@@ -13,33 +13,27 @@ if ($_SESSION['name']) {
 $query = $handler->query("SELECT * FROM registration WHERE id = '$id'");
 $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
 
-
-// UPDATE database - need to put in other file
-$adddress = $_POST['address'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$zip = $_POST['zip'];
-$phone = $_POST['phoneNumber'];
-$employeeId = $_POST['employeeId'];
-$seniorityDate = $_POST['seniorityDate'];
-$payStatusLevel = $_POST['payLevel'];
-$payStep = $_POST['payStep'];
-$tour = $_POST['tour'];
-$daysOff = $_POST['daysOff'];
-$veteranStatus = $_POST['veteran'];
-$layoffProtected = $_POST['layOffProtected'];
-
-try {
-  $stmt = $handler->prepare("INSERT INTO registration (full_name, email, password) VALUES (?, ? , ?)");
-  $stmt->bindValue(1, $fullName);
-  $stmt->bindValue(2, $email);
-  $stmt->bindValue(3, $hashedPassword);
-  $stmt->execute();
-  echo "Inserted";
-} catch (PDOException $e) {
-  echo "We have an error"."<br>";
-  echo $e->getMessage()."<br>";
+// Query database for the rest of the acct information 
+$query = $handler->query("SELECT * FROM account_information WHERE registration_id = '$id'");
+$formAction = ''; 
+if ($query->fetch()) {
+  // If the row exists, store row in obj $acctRow
+  $acctRow = $query->fetch(PDO::FETCH_OBJ); // Store row in obj format 
+  $formAction = 'update-acct-info.php'; // Set form action to 
+} else {
+  // If the query doesn't exist, process the form 
+  $formAction = 'add-acct-info.php';
 }
+
+
+/*
+if (!$acctRow->total) {
+  $formAction = 'add-acct-info.php';
+} else {
+  $formAction = 'account-info.php';
+}
+*/
+
 
 ?>
 
@@ -57,9 +51,9 @@ try {
   <body>
     <div class="container">
       <div class="form-container">
-        <img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px">
+        <a href="index.php"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
         <!--START OF FORM -->
-        <form id="sign-up-form" method="#" action="#">
+        <form id="sign-up-form" method="post" action="<?php echo $formAction; ?>">
           <h3 style="margin-left: 85px"><?php echo $row->full_name; ?> - Profile</h3><br>
           <div class="row"> <!--FORM ROW--> 
             <div class="eight columns">
@@ -189,7 +183,7 @@ try {
               <div class="error" id = "password2-error">Please verify password</div>
             </div>
           </div> <!--END ROW-->
-          <input id="submit" type="submit" value="Update Account Information" class="submit-button">
+          <input id="submit" type="submit" value="Update Account Information" class="submit-button" name="submit">
         </form>
         <!--END OF FORM - tabbed left for spacing-->
       </div>
