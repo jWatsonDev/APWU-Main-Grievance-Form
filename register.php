@@ -7,7 +7,7 @@ $password = trim($_POST['password1']);
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // PW auto salted & hashed 
 
 try {
-  $stmt = $handler->prepare("INSERT INTO registration (full_name, email, password) VALUES (?, ? , ?)");
+  $stmt = $handler->prepare("INSERT INTO registration (full_name, email, password) VALUES (?, ?, ?)");
   $stmt->bindValue(1, $fullName);
   $stmt->bindValue(2, $email);
   $stmt->bindValue(3, $hashedPassword);

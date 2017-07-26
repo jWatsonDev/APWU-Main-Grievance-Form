@@ -6,9 +6,42 @@ session_start();
 // Check if session is established 
 if ($_SESSION['name']) {
   $id = $_SESSION['id']; // Get id of user from url
+  $name = $_SESSION['name'];
 } else {
   header('Location: login.php');
 }
+
+// If the form is submitted
+if ($_POST['submit']) {
+  // Set POST variables
+  $eid = $_POST['eid'];
+  $date = $_POST['grievance-date'];
+  $timeAlone = $_POST['timeAlone'];
+  $machineNumber = $_POST['machine'];
+  $feedSweep = $_POST['radio'];
+  $supervisor = $_POST['supervisor'];
+  $mailProcessed = $_POST['mail-processed'];
+  $timeHelped = $_POST['time-helped'];
+  $timeSwept = $_POST['time-swept'];
+  $timeWorkedAlone = ($_POST['hours-worked-alone'] * 60) + $_POST['minutes-worked-alone'];
+  // Create query
+  $query = "INSERT INTO filed_grievances(employee_id, date, machine_number, time_alone, supervisor_name, feed_sweep, mail_processed, time_help_received, time_help_swept_machine, time_worked_alone, registration_id) 
+    VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  $stmt = $handler->prepare($query);
+  $stmt->bindValue(1, $eid );
+  $stmt->bindValue(2, $date );
+  $stmt->bindValue(3, $timeAlone );
+  $stmt->bindValue(4, $machineNumber );
+  $stmt->bindValue(5, $feedSweep );
+  $stmt->bindValue(6, $supervisor );
+  $stmt->bindValue(7, $mailProcessed );
+  $stmt->bindValue(8, $timeHelped );
+  $stmt->bindValue(9, $timeSwept );
+  $stmt->bindValue(10, $timeWorkedAlone );
+  $stmt->bindValue(11, $id );
+  $stmt->execute();
+}
+
 
 
 ?>
@@ -30,8 +63,8 @@ if ($_SESSION['name']) {
         <a href="index.php"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
         
         <!--START OF FORM -->
-        <form id="sign-up-form" method="post" action="<?php echo $formAction; ?>">
-          <h3 style="margin-left: 85px"><?php echo $name; ?> - Grievance Reporting Form</h3><br>
+        <form id="sign-up-form" method="post" action="create-grievance.php">
+          <h3 style="margin-left: 85px">Grievance Reporting Form<br><small><?php echo $name; ?></small></h3><br>
           
           <div class="row"> <!--FORM ROW--> 
             <div class="six columns">
@@ -58,11 +91,13 @@ if ($_SESSION['name']) {
               <div class="error" id="machineNum">Machine # required</div>
             </div>
             <div class="four columns">
-              <label class="m_p"><small>Fed and Swept Machine by Myself</small><br><br>
-                <input id="radio-null" type="radio" name="radio" value="Yes">
-                  <span class="label-body">Yes</span>&nbsp;&nbsp;&nbsp;
-                <input id="radio-null2" type="radio" name="radio" value="No"> 
-                  <span class="label-body">No</span>
+              <label class="m_p">Did you feed and sweep machine by yourself?<br>
+                <div style="width: 100px; padding-top: 10px;">
+                  <input id="radio-null" type="radio" name="radio" value="Yes">
+                    <span class="label-body">Yes</span>&nbsp;&nbsp;&nbsp;
+                  <input id="radio-null2" type="radio" name="radio" value="No"> 
+                    <span class="label-body">No</span>
+                </div>
               </label>
               <div class="error" id="feedSweep">Did you feed and sweep?</div>
             
@@ -71,124 +106,50 @@ if ($_SESSION['name']) {
           
           <div class="row"> <!--FORM ROW--> 
             <div class="six columns">
-              <label>Supervisor's Name</label>
+              <label>Supervisor's Name</label><br>
               <input id="supervisor" type="text" name="supervisor" size="28" maxlength="28" class="u-full-width">
               <div class="error" id="supervisor-error">Supervisor on duty required</div>
             </div>
             <div class="six columns">
-              <label>I worked approximatedly pieces of mail during the time I worked alone.</label>
-              <input id="mail-processed" type="number" name="mail-processed" size="5" maxlength="10"> 
+              <label>How many pieces of mail did you process during that time?</label>
+              <input id="mail-processed" type="number" name="mail-processed" size="5" maxlength="10" class="u-full-width"> 
               <div class="error" id="mailProcessed">Pieces of mail processed required</div>
             </div>
           </div> <!--END ROW-->
-    
-          <h4>Only complete if you received assistance.</h4>
+          <hr>
+          <h4 class="center-text" style="font-size: 23px">Only complete the below section if you received assistance.</h4>
           
           <div class="row"> <!--FORM ROW--> 
-            <div class="six columns">
-              <label>I did receive help at approximately <input id="time-helped" type="text" name="time-helped" size="5" maxlength="10">
-              this person only swept the machine which took about
-              <input id="time-swept" type="number" name="time-swept" size="5" maxlength="10" placeholder="Minutes">
-              then I worked by myself again.</label>
+            <div class="four columns">
+              <label>What time did you receive help?</label>
+              <input id="time-helped" type="text" name="time-helped" size="5" maxlength="10" class="u-full-width">
             </div>
-            <div class="six columns">
-              <label>I worked alone for a total of <br><input id="hours-worked-alone" type="number" name="hours-worked-alone" size="2" maxlength="2" placeholder="Hours"> and <input id="minutes-worked-alone" type="number" name="minutes-worked-alone" size="5" maxlength="10" placeholder="Minutes"> <br> on the above date and machine.</label>
+            <div class="four columns">
+              <label>How long did the individual assist you?</label>
+              <input id="time-swept" type="number" name="time-swept" size="5" maxlength="10" class="u-full-width">
+            </div>
+            
+            
+            <div class="four columns">
+              <label>In total, how long did you work alone on the above date and macine?</label>
+              <div class="row">
+                <div class="six columns">
+                  <input id="hours-worked-alone" type="number" name="hours-worked-alone" size="2" maxlength="2" placeholder="Hours" class="u-full-width">
+                </div>
+                <div class="six columns">
+                  <input id="minutes-worked-alone" type="number" name="minutes-worked-alone" size="5" maxlength="10" placeholder="Minutes" class="u-full-width">
+                </div>
+              </div>
               <div class="error" id="totalHoursWorkedAlone">Total hours worked alone required</div>
             </div>
           </div> <!--END ROW-->
-
-        
-
+          <br>
           <input id="submit" type="submit" value="Submit Grievance" class="submit-button" name="submit">
         </form>
         <!--END OF FORM - tabbed left for spacing-->
       </div>
     </div>
-    
-    <!--START OF CHRIS' FORM-->
-        <form id="userPageForm" action="../inc.phpLogic/fileGrievance.php" method="POST">
 
-          <label> Employee ID:</label>
-          <input id="eid" type="text" name="eid" size="8" maxlength="8">
-
-          <div class="error" id = "eid-error">Employee ID field required</div>
-
-
-                <label>Date of Grievance (mm/dd/yy):</label>
-                <input id="grievance-date" type="date" name="grievance-date" size="10" maxlength="10">
-
-             <div class="error" id="grievanceDateError">Grievance date required</div>
-
-
-             <label>I worked alone from (Example: 11:45pm until 1:20am)</label>
-             <input id="time-alone" type="text" name="timeAlone" size="20" maxlength="28">
-
-           <div class="error" id="timeAlone">Must provide time worked alone</div>
-
-
-
-                <label> Machine Number</label>
-                <input id="machine" type="text" name="machine" size="40" maxlength="10">
-
-            <div class="error" id="machineNum">Machine # required</div>
-
-
-              <label class="m_p">I had to feed and sweep the machine myself
-              <input id="radio-null" type="radio" name="radio" value="Yes"><span class="label-body">Yes</span><input id="radio-null2" type="radio" name="radio" value="No"><span class="label-body">No</span>
-          </label>
-          <div class="error" id="feedSweep">Did you feed and sweep?</div>
-
-
-
-<div class="s_m">
-                <label>SUPERVISORS NAME:</label>
-                <input id="supervisor" type="text" name="supervisor" size="28" maxlength="28">
-
-              <div class="error" id="supervisor-error">Supervisor on duty required</div>
-            </div>
-
-                <label>I worked approximatedly <input id="mail-processed" type="number" name="mail-processed" size="5" maxlength="10"> pieces of mail during the time I worked alone.</label>
-                  <div class="error" id="mailProcessed">Pieces of mail processed required</div>
-<div class="row">
-              <div class="w_m"><h2>Only complete field if you receieved help</h2>
-                <label>I did receive help at approximately <input id="time-helped" type="text" name="time-helped" size="5" maxlength="10">
-                  this person only swept the machine which took about
-                  <input id="time-swept" type="number" name="time-swept" size="5" maxlength="10" placeholder="Minutes">
-                  then I worked by myself again.</label>
-</div>
-
-</div>
-                <label>I worked alone for a total of <br><input id="hours-worked-alone" type="number" name="hours-worked-alone" size="2" maxlength="2" placeholder="Hours"> and <input id="minutes-worked-alone" type="number" name="minutes-worked-alone" size="5" maxlength="10" placeholder="Minutes"> <br> on the above date and machine.</label>
-                <div class="error" id="totalHoursWorkedAlone">Total hours worked alone required</div>
-
-            <input id="submit" type="submit" value="Submit Grievance">
-
-        </form>
-        <!--END OF CHRIS' FORM-->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <footer class="">
       <small>&copy; 2017 American Postal Workers Union</a></small>
       <div class="social-box">

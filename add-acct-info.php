@@ -3,7 +3,7 @@ include_once('connection.php');
 session_start();
 $id = $_SESSION['id'];
 if (isset($_POST['submit'])) {
-  // UPDATE database - need to put in other file
+  // POST variables 
   $employeeType = $_POST['employeeStatus'];
   $adddress = $_POST['address'];
   $city = $_POST['city'];
