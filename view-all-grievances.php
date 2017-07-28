@@ -4,6 +4,7 @@ session_start();
 // Check if session is established 
 if ($_SESSION['name']) {
   $id = $_SESSION['id']; // Get id of user from url
+  $name = $_SESSION['name'];
 } else {
   header('Location: login.php');
 }

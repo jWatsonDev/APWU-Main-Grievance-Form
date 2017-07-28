@@ -57,7 +57,8 @@ if (!$acctRow->total) {
         <a href="index.php"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
         <!--START OF FORM -->
         <form id="sign-up-form" method="post" action="<?php echo $formAction; ?>">
-          <h3 style="margin-left: 85px"><?php echo $row->full_name; ?> - Profile</h3><br>
+
+          <h3 style="margin-left: 85px">Profile<br><small><?php echo $row->full_name; ?></small></h3><br>
           <div class="row"> <!--FORM ROW--> 
             <div class="eight columns">
               <label for="fullName">Full Name</label>
@@ -68,9 +69,12 @@ if (!$acctRow->total) {
               <label for="employee-status">Employee Status</label>
               <select name="employeeStatus" id="drop-down-menu" class="u-full-width">
                 <option value="none">Select Employee Type</option>
-                <option value="FTR">Full Time Regular</option>
-                <option value="PTR">Part Time Regular</option>
-                <option value="PSE">Postal Support Employee</option>
+                <?php echo (isset($acctRow->employee_type) ? $loop = true : $loop = ''); ?>
+                <?php if($loop) : ?>
+                <option <?php echo ((isset($acctRow->employee_type) && $acctRow->employee_type === 'FTR') ? "value='FTR' selected" : "value='FTR'"); ?>>Full Time Regular</option>
+                <option <?php echo ((isset($acctRow->employee_type) && $acctRow->employee_type === 'PTR') ? "value='PTR' selected" : "value='PTR'"); ?>>Part Time Regular</option>
+                <option <?php echo ((isset($acctRow->employee_type) && $acctRow->employee_type === 'PSE') ? "value='PSE' selected" : "value='PSE'"); ?>>Postal Support Employee</option>
+                <?php endif; ?>
               </select>
             </div>
             <div class="error" id = "drop-down-menu-error">Please select your Employee Status</div>
@@ -79,7 +83,7 @@ if (!$acctRow->total) {
           <div class="row"> <!--FORM ROW--> 
             <div class="twelve columns">
               <label for="address">Street Address</label>
-              <input id="address" type="text" name="address" maxlength="80" class="u-full-width" value="<?php echo (isset($acctRow->state) ? $acctRow->address : ''); ?>">
+              <input id="address" type="text" name="address" maxlength="80" class="u-full-width" value="<?php echo (isset($acctRow->address) ? $acctRow->address : ''); ?>">
             <div class="error" id = "address-error">Address field required</div>
             </div>
           </div> <!--END ROW-->
@@ -87,7 +91,7 @@ if (!$acctRow->total) {
           <div class="row"> <!--FORM ROW--> 
             <div class="six columns">
               <label for="city">City</label>
-              <input id="city" type="text" name="city" maxlength="50" class="u-full-width" value="<?php echo (isset($acctRow->state) ? $acctRow->city : ''); ?>">
+              <input id="city" type="text" name="city" maxlength="50" class="u-full-width" value="<?php echo (isset($acctRow->city) ? $acctRow->city : ''); ?>">
             <div class="error" id ="city-error">City field required</div>
             </div>
             <div class="three columns">
@@ -146,16 +150,16 @@ if (!$acctRow->total) {
             <div class="four columns">
               <label for="veteran-status">Veteran Status</label>
               <select name="veteranStatus" class="veteranStatus u-full-width" id="drop-down-menu" value="<?php echo (isset($acctRow->state) ? $acctRow->veteran_status : ''); ?>">
-                <option value="Yes">Yes</option>
-                <option value="NO">No</option>
+                <option <?php echo ((isset($acctRow->veteran_status) && $acctRow->veteran_status === 'Yes') ? "value='Yes' selected" : "value='Yes'"); ?>>Yes</option>
+                <option <?php echo ((isset($acctRow->veteran_status) && $acctRow->veteran_status === 'NO') ? "value='NO' selected" : "value='NO'"); ?>>No</option>
               </select>
               <div class="error" id = "veteranStatus-error">Veteran Status field required</div>
             </div>
             <div class="four columns">
               <label for="layoff-protected">Layoff Protected</label>
               <select name="layOffProtected" class="layOffProtected u-full-width" id="drop-down-menu">
-                <option value="YES">Yes</option>
-                <option value="NO">No</option>
+                <option <?php echo ((isset($acctRow->layoff_protected) && $acctRow->layoff_protected === 'YES') ? "value='YES' selected" : "value='YES'"); ?>>Yes</option>
+                <option <?php echo ((isset($acctRow->layoff_protected) && $acctRow->layoff_protected === 'NO') ? "value='NO' selected" : "value='NO'"); ?>>No</option>
               </select>
               <div class="error" id ="layOffProtected-error">Lay-off Protected field required</div>
             </div>
@@ -176,12 +180,12 @@ if (!$acctRow->total) {
         
           <div class="row"> <!--FORM ROW--> 
             <div class="six columns">
-              <label for="password">Password</label>
+              <label for="password" style="color: red;">Reset Password</label>
               <input id="passwordField1" type="password" name="password1" class="u-full-width" maxlength="120">
               <div class="error" id = "password1-error">Please create a password.</div>
             </div>
             <div class="six columns">
-              <label for="email-password">Reenter Password</label>
+              <label for="email-password" style="color: red;">Reenter New Password</label>
               <input id="passwordField2" type="password" name="password2" class="u-full-width" maxlength="120">
               <div class="error" id = "password2-error">Please verify password</div>
             </div>
