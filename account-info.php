@@ -22,20 +22,11 @@ if ($aiQuery->fetch()) {
   // If the row exists, store row in obj $acctRow
   $aiQuery = $handler->query("SELECT * FROM account_information WHERE registration_id = '$id'");
   $acctRow = $aiQuery->fetch(PDO::FETCH_OBJ); // Store row in obj format 
-  //$formAction = 'update-acct-info.php'; // Set form action to 
+  $formAction = 'update-acct-info.php'; // Set form action to 
 } else {
   // If the query doesn't exist, process the form 
   $formAction = 'add-acct-info.php';
 }
-
-
-/*
-if (!$acctRow->total) {
-  $formAction = 'add-acct-info.php';
-} else {
-  $formAction = 'account-info.php';
-}
-*/
 
 
 ?>
