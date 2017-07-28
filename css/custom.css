@@ -81,12 +81,14 @@ footer small {
 }
 
 form div,
-.button-container {
+.button-container,
+.content-container div {
   width: 80%;
   margin: auto;
 }
 
-.form-container {
+.form-container,
+.content-container {
   position: relative;
   width: 90%;
   margin: auto;

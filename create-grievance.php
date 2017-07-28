@@ -12,7 +12,7 @@ if ($_SESSION['name']) {
 }
 
 // If the form is submitted
-if ($_POST['submit']) {
+if (isset($_POST['submit'])) {
   // Set POST variables
   $eid = $_POST['eid'];
   $date = $_POST['grievance-date'];
@@ -32,8 +32,8 @@ if ($_POST['submit']) {
   $stmt->bindValue(2, $date );
   $stmt->bindValue(3, $timeAlone );
   $stmt->bindValue(4, $machineNumber );
-  $stmt->bindValue(5, $feedSweep );
-  $stmt->bindValue(6, $supervisor );
+  $stmt->bindValue(5, $supervisor );
+  $stmt->bindValue(6, $feedSweep );
   $stmt->bindValue(7, $mailProcessed );
   $stmt->bindValue(8, $timeHelped );
   $stmt->bindValue(9, $timeSwept );

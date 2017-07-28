@@ -1,5 +1,5 @@
 <?php
-include_once('connection.php');
+require_once('connection.php');
 session_start();
 $id = $_SESSION['id'];
 if (isset($_POST['submit'])) {

@@ -35,7 +35,7 @@ if ($_SESSION['name']) {
           <div class="button-container">
             <h3 class="center-text">Welcome, <?php echo $name; ?>.</h3>
             <a class="button u-full-width" href="account-info.php?id=<?php echo $id; ?>"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Update Account Information</a>
-            <button class="u-full-width"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; View/Edit Submitted Grievances</button>
+            <a class="button u-full-width" href="view-all-grievances.php"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; View/Edit Submitted Grievances</a>
             <a class="button u-full-width" href="create-grievance.php"><i class="fa fa-folder-open-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; File New Grievance</a>
             <button class="u-full-width"><i class="fa fa-sign-out fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Logout</button>
           </div>
