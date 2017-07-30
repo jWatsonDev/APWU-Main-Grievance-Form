@@ -138,7 +138,8 @@ a {
   z-index: 899;
 }
 
-.registration-form {
+.registration-form,
+.update-email-form {
   position: absolute;
   display: none;
   z-index: 900;

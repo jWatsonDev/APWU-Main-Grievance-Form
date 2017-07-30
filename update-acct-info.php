@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
   $daysOff = $_POST['daysOff'];
   $veteranStatus = $_POST['veteranStatus'];
   $layoffProtected = $_POST['layOffProtected'];
-  //address, city, state, zip_code, phone_number, employee_id, seniority_date, pay_level, pay_step, tour, days_off, veteran_status, layoff_protected, registration_id
+
   try {
     $sql = "UPDATE account_information SET employee_type = '$employeeType',
                                             address = '$adddress',
@@ -34,23 +34,7 @@ if (isset($_POST['submit'])) {
                                             days_off = '$daysOff',
                                             veteran_status = '$veteranStatus',
                                             layoff_protected = '$layoffProtected'
-                                            WHERE registration_id = '$id'";
-    //"UPDATE articles SET  `article_content`='' WHERE `id` = ?"
-    //$stmt->bindParam(':employeeType', $employeeType); 
-    /*$stmt->bindValue(2, $adddress);
-    $stmt->bindValue(3, $city);
-    $stmt->bindValue(4, $state);
-    $stmt->bindValue(5, $zip);
-    $stmt->bindValue(6, $phone);
-    $stmt->bindValue(7, $employeeId);
-    $stmt->bindValue(8, $seniorityDate);
-    $stmt->bindValue(9, $payStatusLevel);
-    $stmt->bindValue(10, $payStep);
-    $stmt->bindValue(11, $tour);
-    $stmt->bindValue(12, $daysOff);
-    $stmt->bindValue(13, $veteranStatus);
-    $stmt->bindValue(14, $layoffProtected);
-    $stmt->bindValue(15, $id);*/
+                                            WHERE id = '$id'";
     $stmt = $handler->prepare($sql);
     $stmt->execute();
     echo "Updated";

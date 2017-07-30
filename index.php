@@ -2,7 +2,7 @@
 // UI - Administrative Panel for all users
 // If super admin, show an extra button for viewing/editing all grievances 
 session_start(); 
-if ($_SESSION['name']) {
+if (!empty($_SESSION['name'])) {
   $name = $_SESSION['name'];
   $id = $_SESSION['id'];
 } else {
@@ -34,7 +34,7 @@ if ($_SESSION['name']) {
         <div class="six columns" style="padding-top: 3%;">
           <div class="button-container">
             <h3 class="center-text">Welcome, <?php echo $name; ?>.</h3>
-            <a class="button u-full-width" href="account-info.php?id=<?php echo $id; ?>"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Update Account Information</a>
+            <a class="button u-full-width" href="account-info.php"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Update Account Information</a>
             <a class="button u-full-width" href="view-all-grievances.php"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; View/Edit Submitted Grievances</a>
             <a class="button u-full-width" href="create-grievance.php"><i class="fa fa-folder-open-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; File New Grievance</a>
             <button class="u-full-width"><i class="fa fa-sign-out fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Logout</button>
