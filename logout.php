@@ -1,5 +1,7 @@
 <?php
 // destroy session -> provide them with the ability to log back in 
+session_start();
+session_destroy();
 ?>
 
 <!DOCTYPE <!DOCTYPE html>

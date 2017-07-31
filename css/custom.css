@@ -69,7 +69,8 @@ footer small {
 
 .login input,
 .registration-form .submit-button,
-.form-container .submit-button {
+.form-container .submit-button,
+.comment-form .submit-button {
   display: block;
   width: 80% !important;
   margin: 15px auto !important;
@@ -139,7 +140,8 @@ a {
 }
 
 .registration-form,
-.update-email-form {
+.update-email-form,
+.comment-form {
   position: absolute;
   display: none;
   z-index: 900;
@@ -172,4 +174,9 @@ a {
   #dividing-border {
     display: none;
   }
+}
+
+table td,
+th {
+  text-align: center !important;
 }

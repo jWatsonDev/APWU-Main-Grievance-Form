@@ -10,13 +10,17 @@ if (isset($_POST['submit'])) {
   
   $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
   $hashedPassword = $row->password;
-
+  $admin = $row->admin === '1';
   if(password_verify($password, $hashedPassword)) {
     session_start();
     $_SESSION['name'] = $row->full_name;
     $_SESSION['id'] = $row->id;
-    header('Location: index.php');
-    //echo $_SESSION['name'];
+    if ($admin) {
+      $_SESSION['admin'] = $admin;
+      header('Location: admin/index.php');
+    } else {
+      header('Location: index.php');
+    }
   } else {
     echo "You've entered an incorrect password.";
   }
