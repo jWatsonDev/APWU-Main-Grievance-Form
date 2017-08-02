@@ -141,17 +141,18 @@ a {
 
 .registration-form,
 .update-email-form,
-.comment-form {
+.comment-form,
+.view-related-comments {
   position: absolute;
   display: none;
   z-index: 900;
   background-color: #fff;
   opacity: 1;
   width: 76%;
-  height: 500px;
+  height: 550px;
   margin-left: 12%;
   top: 50%;
-  margin-top: -250px;
+  margin-top: -275px;
   overflow-y: scroll;
   min-width: 245px;
   padding: 30px;
