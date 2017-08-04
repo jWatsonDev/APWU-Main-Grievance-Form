@@ -181,3 +181,7 @@ table td,
 th {
   text-align: center !important;
 }
+
+.blah {
+  display: inline !important;
+}

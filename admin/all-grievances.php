@@ -12,7 +12,7 @@ if ($_SESSION['admin']) {
 // Query database for name and email from 
 $query = $handler->query("SELECT * FROM filed_grievances");
 
-if ($_POST['submit-comment']) {
+if (isset($_POST['submit-comment'])) {
   $topic = $_POST['topic'];
   $comment = $_POST['comment'];
   $grievance_id = $_POST['id'];
@@ -82,8 +82,12 @@ function formatDate($date) {
               </td>
               <td>
                 <i class="fa fa-plus-square-o fa-2x fa-panel postButton" aria-hidden="true" id="add-comment" data-key="<?php echo $row->id; ?>" onclick="getIdCreateComment(this)"></i>&nbsp;
-                <i class="fa fa-comment-o fa-2x fa-panel view-comments" aria-hidden="true" data-id="<?php echo $row->id; ?>" id=""></i>
-                <input type="hidden" name="postId" value="3">
+                
+                <form method="post" action="all-grievances.php?id=<?php echo $row->id; ?>" class="blah" name="view-all-comments<?php echo $row->id; ?>">
+                  <i class="fa fa-comment-o fa-2x fa-panel view-comments" aria-hidden="true" data-id="<?php echo $row->id; ?>"  onclick="document.forms['view-all-comments<?php echo $row->id; ?>'].submit();"></i>
+                  <input type="hidden" name="get-apwu-id" value="<?php echo $row->id; ?>">
+                  
+                </form>
               </td>
             </tr>
             <?php
@@ -142,7 +146,8 @@ function formatDate($date) {
      
 <!--START OF VIEW COMMENTS-->
     <div class="view-related-comments">
-      <?php $query = $handler->query("SELECT * FROM comments"); ?>
+      <?php $id = $_GET['id']; ?>
+      <?php $query = $handler->query("SELECT * FROM comments Where account_information_id = '$id'"); ?>
       <div>
         <h3 class="center-text">Comment/s</h3><br>
         <table>
@@ -152,6 +157,10 @@ function formatDate($date) {
               <th>Message</th>
             </tr>
           </thead>
+          <?php 
+            if (isset($_GET['id'])) {
+              $id = $_GET['id'];
+          ?>
           <tbody>
             <?php while ($row = $query->fetch(PDO::FETCH_OBJ)) : ?>
             <tr>
@@ -159,6 +168,15 @@ function formatDate($date) {
               <td><?php echo $row->comment; ?></td>
             </tr>
             <?php endwhile; ?>
+            
+            <script>
+            // NEED TO CHECK AND see if there is any comments first. 
+              // waiting for the page to load
+              document.addEventListener("DOMContentLoaded", function() {
+                viewComments();
+              });
+            </script>
+            <?php } ?>
           </tbody>
         </table>
       </div>
@@ -166,6 +184,7 @@ function formatDate($date) {
 <!--END OF VIEW COMMENTS-->
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/script.js"></script>
     <script>
       /*
        * gets data-key of comment that is clicked on
@@ -177,6 +196,6 @@ function formatDate($date) {
         createComment();
       }
     </script>
-    <script src="../js/script.js"></script>
+    
   </body>
 </html>

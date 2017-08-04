@@ -16,14 +16,15 @@ $("#change-email, .create-account").click(function() {
     });
 });
 
-$(".view-comments").click(function() {
+
+function viewComments() {
     $(".overlay").fadeIn();
     $(".view-related-comments").fadeIn("slow");
     $('html, body').css({
         overflow: 'hidden',
         height: '100%'
     });
-});
+}
 
 function createComment() {
     $(".overlay").fadeIn();
