@@ -8,15 +8,30 @@ if ($_SESSION['admin']) {
 } else {
   header('Location: ../index.php');
 }
-
-// Query database for name and email from 
+$perPage = 2; // number of results per page
+if (isset($_GET['page']) && !empty($_GET['page'])){
+  $currentPage = $_GET['page'];
+} else {
+  $currentPage = 1;
+}
+$start = ($currentPage * $perPage) - $perPage;
+// get all filed grievances
 $query = $handler->query("SELECT * FROM filed_grievances");
+$totalResults = $query->rowCount(); // get total number of grievances
+$query = $handler->query("SELECT * FROM filed_grievances LIMIT $start, $perPage");
+$endPage = ceil($totalResults / $perPage);
+$startPage = 1;
+$nextpage = $curentPage + 1;
+$previousPage = $curentPage - 1;
 
+
+
+
+// add comments to db
 if (isset($_POST['submit-comment'])) {
   $topic = $_POST['topic'];
   $comment = $_POST['comment'];
   $grievance_id = $_POST['id'];
-
   try {
     $stmt = $handler->prepare("INSERT INTO comments (name, topic, comment, account_information_id) VALUES (?, ?, ?, ?)");
     $stmt->bindValue(1, $name);
@@ -28,7 +43,6 @@ if (isset($_POST['submit-comment'])) {
   } catch (PDOException $e) {
     echo "We have an error: " . $e->getMessage() . "<br>";
   }
-  
 }
 
 /*
@@ -56,6 +70,17 @@ function formatDate($date) {
         <a href="index.php"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
         <div style="padding-top: 80px">
           <h3>Manage Grievances</h3><br>
+          
+        <?php
+          for ($i = $startPage; $i <= $endPage; $i++) { 
+            echo "<a href='?page={$i}'>" . $i . "</a> ";
+          }
+        
+        
+        
+        ?>
+
+          
         <table class="u-full-width">
           <thead>
             <tr>
@@ -70,6 +95,8 @@ function formatDate($date) {
           <tbody>
             <?php 
             //if ($query->rowCount()) {
+
+              
               while ($row = $query->fetch(PDO::FETCH_OBJ)) :
             ?>
             <tr>
