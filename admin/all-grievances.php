@@ -8,15 +8,14 @@ if ($_SESSION['admin']) {
 } else {
   header('Location: ../index.php');
 }
-$perPage = 2; // number of results per page
+$perPage = 5; // number of results per page
 if (isset($_GET['page']) && !empty($_GET['page'])){
   $currentPage = $_GET['page'];
 } else {
   $currentPage = 1;
 }
-$start = ($currentPage * $perPage) - $perPage;
-// get all filed grievances
-$query = $handler->query("SELECT * FROM filed_grievances");
+$start = ($currentPage * $perPage) - $perPage; // where to start. what results to load in query
+$query = $handler->query("SELECT * FROM filed_grievances"); // get all filed grievances
 $totalResults = $query->rowCount(); // get total number of grievances
 $query = $handler->query("SELECT * FROM filed_grievances LIMIT $start, $perPage");
 $endPage = ceil($totalResults / $perPage);
@@ -70,58 +69,55 @@ function formatDate($date) {
         <a href="index.php"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
         <div style="padding-top: 80px">
           <h3>Manage Grievances</h3><br>
-          
-        <?php
-          for ($i = $startPage; $i <= $endPage; $i++) { 
-            echo "<a href='?page={$i}'>" . $i . "</a> ";
-          }
-        
-        
-        
-        ?>
-
-          
-        <table class="u-full-width">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Date Filed</th>
-              <th>Date of Grievance</th>
-              <th>Supervisor</th>
-              <th>Status</th>
-              <th>Comment/s</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php 
-            //if ($query->rowCount()) {
-
-              
-              while ($row = $query->fetch(PDO::FETCH_OBJ)) :
-            ?>
-            <tr>
-              <td><a href="#"><i class="fa fa-eye fa-2x fa-panel" aria-hidden="true"></i></a></td>
-              <td><?php echo formatDate($row->date_filed); ?></td>
-              <td><?php echo formatDate($row->date); ?></td>
-              <td><?php echo $row->supervisor_name; ?></td>
-              <td>
-                <i class="fa fa-pencil-square-o fa-1x fa-panel" aria-hidden="true"></i> &nbsp; Submitted
-              </td>
-              <td>
-                <i class="fa fa-plus-square-o fa-2x fa-panel postButton" aria-hidden="true" id="add-comment" data-key="<?php echo $row->id; ?>" onclick="getIdCreateComment(this)"></i>&nbsp;
-                
-                <form method="post" action="all-grievances.php?id=<?php echo $row->id; ?>" class="blah" name="view-all-comments<?php echo $row->id; ?>">
-                  <i class="fa fa-comment-o fa-2x fa-panel view-comments" aria-hidden="true" data-id="<?php echo $row->id; ?>"  onclick="document.forms['view-all-comments<?php echo $row->id; ?>'].submit();"></i>
-                  <input type="hidden" name="get-apwu-id" value="<?php echo $row->id; ?>">
+          <table class="u-full-width">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Date Filed</th>
+                <th>Date of Grievance</th>
+                <th>Supervisor</th>
+                <th>Status</th>
+                <th>Comment/s</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php while ($row = $query->fetch(PDO::FETCH_OBJ)) : ?>
+              <tr>
+                <td><a href="#"><i class="fa fa-eye fa-2x fa-panel" aria-hidden="true"></i></a></td>
+                <td><?php echo formatDate($row->date_filed); ?></td>
+                <td><?php echo formatDate($row->date); ?></td>
+                <td><?php echo $row->supervisor_name; ?></td>
+                <td>
+                  <i class="fa fa-pencil-square-o fa-1x fa-panel" aria-hidden="true"></i> &nbsp; Submitted
+                </td>
+                <td>
+                  <i class="fa fa-plus-square-o fa-2x fa-panel postButton" aria-hidden="true" id="add-comment" data-key="<?php echo $row->id; ?>" onclick="getIdCreateComment(this)"></i>&nbsp;
                   
-                </form>
-              </td>
-            </tr>
-            <?php
-              endwhile;
-            ?>
-          </tbody>
-        </table>
+                  <form method="post" action="?page=<?php echo $currentPage; ?>&id=<?php echo $row->id; ?>" class="blah" name="view-all-comments<?php echo $row->id; ?>">
+                    <i class="fa fa-comment-o fa-2x fa-panel view-comments" aria-hidden="true" data-id="<?php echo $row->id; ?>"  onclick="document.forms['view-all-comments<?php echo $row->id; ?>'].submit();"></i>
+                    <input type="hidden" name="get-apwu-id" value="<?php echo $row->id; ?>">
+                    
+                  </form>
+                </td>
+              </tr>
+              <?php
+                endwhile;
+              ?>
+            </tbody>
+          </table>
+          <span class="pagination">
+          <?php
+            for ($i = $startPage; $i <= $endPage; $i++) { 
+              if ($_GET['page'] == $i) {
+                echo "[<a href='?page={$i}'>" . $i . "</a>] ";
+              } else if (empty($_GET['page']) && $i == 1) {
+                echo "[<a href='?page={$i}'>" . $i . "</a>] ";
+              } else {
+                echo "<a href='?page={$i}'>" . $i . "</a> ";
+              }
+            }
+          ?>
+          </span>
         </div>
       </div>
     </div>
@@ -201,6 +197,7 @@ function formatDate($date) {
               // waiting for the page to load
               document.addEventListener("DOMContentLoaded", function() {
                 viewComments();
+                //console.log("you");
               });
             </script>
             <?php } ?>
