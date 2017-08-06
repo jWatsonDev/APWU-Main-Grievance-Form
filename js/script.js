@@ -26,6 +26,15 @@ function viewComments() {
     });
 }
 
+function viewGrievance() {
+    $(".overlay").fadeIn();
+    $(".view-grievance").fadeIn("slow");
+    $('html, body').css({
+        overflow: 'hidden',
+        height: '100%'
+    });
+}
+
 function createComment() {
     $(".overlay").fadeIn();
     $(".comment-form").fadeIn("slow");
@@ -37,7 +46,7 @@ function createComment() {
 
 
 $('.overlay').on('click', function(event) {
-    $(".overlay, .registration-form, .update-email-form, .comment-form, .view-related-comments").fadeOut("slow");
+    $(".overlay, .registration-form, .update-email-form, .comment-form, .view-related-comments, .view-grievance").fadeOut("slow");
     $('html, body').css({
         overflow: 'auto',
         height: 'auto'

@@ -141,7 +141,8 @@ a {
 .registration-form,
 .update-email-form,
 .comment-form,
-.view-related-comments {
+.view-related-comments,
+.view-grievance {
   position: absolute;
   display: none;
   z-index: 900;
@@ -159,6 +160,11 @@ a {
   padding-bottom: 50px;
   box-sizing: border-box;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.postButton,
+.view-comments {
+  cursor: pointer;
 }
 
 .error {

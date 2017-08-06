@@ -83,7 +83,12 @@ function formatDate($date) {
             <tbody>
               <?php while ($row = $query->fetch(PDO::FETCH_OBJ)) : ?>
               <tr>
-                <td><a href="#"><i class="fa fa-eye fa-2x fa-panel" aria-hidden="true"></i></a></td>
+                <td><!--<a href="#"><i class="fa fa-eye fa-2x fa-panel" aria-hidden="true"></i></a>-->
+                  <form method="post" action="?page=<?php echo $currentPage; ?>&gId=<?php echo $row->id; ?>" class="blah" name="view-grievance<?php echo $row->id; ?>">
+                    <i class="fa fa-eye fa-2x fa-panel view-comments" aria-hidden="true" data-id="<?php echo $row->id; ?>"  onclick="document.forms['view-grievance<?php echo $row->id; ?>'].submit();"></i>
+                  </form>
+                
+                </td>
                 <td><?php echo formatDate($row->date_filed); ?></td>
                 <td><?php echo formatDate($row->date); ?></td>
                 <td><?php echo $row->supervisor_name; ?></td>
@@ -206,6 +211,49 @@ function formatDate($date) {
       </div>
     </div>
 <!--END OF VIEW COMMENTS-->
+
+
+<!--START OF VIEW GRIEVANCE-->
+    <div class="view-grievance">
+      <?php $gId = $_GET['gId']; ?>
+      <?php $query = $handler->query("SELECT * FROM filed_grievances Where id = '$gId'"); ?>
+      <div>
+        <h3 class="center-text">Grievance</h3><br>
+          <?php 
+            if (isset($_GET['gId'])) {
+              $id = $_GET['gId'];
+          ?>
+          <tbody>
+            <?php $row = $query->fetch(PDO::FETCH_OBJ); ?>
+            <ul>
+              <li><strong>Employee ID:</strong> <?php echo $row->employee_id; ?></li>
+              <li><strong>Date of grievance:</strong> <?php echo formatDate($row->date); ?></li>
+              <li><strong>Date filed:</strong> <?php echo formatDate($row->date_filed); ?></li>
+              <li><strong>Time worked alone:</strong> <?php echo $row->time_alone; ?></li>
+              <li><strong>Machine number:</strong> <?php echo $row->machine_number; ?></li>
+              <li><strong>Feed and sweep alone:</strong> <?php echo $row->feed_sweep; ?></li>
+              <li><strong>Supervisor's name:</strong> <?php echo $row->supervisor_name; ?></li>
+              <li><strong>Number of mail sorted during period:</strong> <?php echo $row->mail_processed; ?></li>
+              <li><strong>Received help:</strong> <?php echo $row->time_help_received; ?></li>
+              <li><strong>Received assistance for:</strong> <?php echo $row->time_help_swept_machine; ?></li>
+              <li><strong>Total time worked alone:</strong> <?php echo $row->time_worked_alone; ?></li>
+            
+            </ul>
+            
+            
+            <script>
+            // NEED TO CHECK AND see if there is any comments first. 
+              // waiting for the page to load
+              document.addEventListener("DOMContentLoaded", function() {
+                viewGrievance();
+                //console.log("you");
+              });
+            </script>
+            <?php } ?>
+      </div>
+    </div>
+<!--END OF VIEW GRIEVANCE-->
+
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../js/script.js"></script>
