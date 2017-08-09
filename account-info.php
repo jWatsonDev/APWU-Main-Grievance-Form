@@ -145,7 +145,7 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
               <a class="button u-full-width" id="change-email">Update Email</a>
             </div>
             <div class="six columns">
-              <button class="u-full-width">Update Password</button>
+              <a class="button u-full-width" id="change-pw">Update Password</a>
             </div>   
           </div>
           <!--<div class="row"> 
@@ -234,6 +234,41 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
     </form>
     <!--END OF FORM -->
     </div>
+    
+    
+    <div class="update-pw-form">
+    <!--START OF FORM -->
+    <form id="sign-up-form" method="post" action="update-email-pw.php">
+      <h3 class="center-text">Update Password</h3><br>
+      <div class="row"> <!--FORM ROW--> 
+        <div class="six columns">
+          <label for="password">Password</label>
+          <input id="password" type="text" name="newPw1" class="u-full-width" maxlength="120">
+          
+        </div>
+        <div class="six columns">
+          <label for="pw-confirm">Reenter Password</label>
+          <input id="pw-confirm" type="text" name="newPw2" class="u-full-width" maxlength="120">
+          
+        </div>
+      </div> <!--END ROW-->
+      <div class="row"> <!--FORM ROW--> 
+        <div class="six columns">
+          <label for="password">Password</label>
+          <input id="passwordField1" type="password" name="password1" class="u-full-width" maxlength="120">
+          <div class="error" id = "password1-error">Enter password.</div>
+        </div>
+        <div class="six columns">
+          <br>
+          <button id="" type="password" class="u-full-width" name="pw-change">Update Password</button>
+        </div>
+      </div> <!--END ROW-->
+    </form>
+    <!--END OF FORM -->
+    </div>
+    
+    
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
   </body>
