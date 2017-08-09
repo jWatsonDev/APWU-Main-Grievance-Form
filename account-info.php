@@ -202,8 +202,8 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
     <div class="overlay"></div>
     <div class="update-email-form">
     
-    <!--START OF FORM - tabbed left for spacing-->
-    <form id="sign-up-form" method="post" action="register.php">
+    <!--START OF FORM -->
+    <form id="sign-up-form" method="post" action="update-email-pw.php">
       <h3 class="center-text">Update Email</h3><br>
       
       <div class="row"> <!--FORM ROW--> 
@@ -223,11 +223,11 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
         <div class="six columns">
           <label for="password">Password</label>
           <input id="passwordField1" type="password" name="password1" class="u-full-width" maxlength="120">
-          <div class="error" id = "password1-error">Please create a password.</div>
+          <div class="error" id = "password1-error">Enter password.</div>
         </div>
         <div class="six columns">
           <br>
-          <button id="" type="password" class="u-full-width">Update Email</button>
+          <button id="" type="password" class="u-full-width" name="submit">Update Email</button>
         </div>
       </div> <!--END ROW-->
 
