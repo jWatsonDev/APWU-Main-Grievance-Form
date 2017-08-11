@@ -91,9 +91,15 @@ function formatDate($date) {
                 </td>
                 <td><?php echo formatDate($row->date_filed); ?></td>
                 <td><?php echo formatDate($row->date); ?></td>
-                <td><?php echo $row->supervisor_name; ?></td>
+                <td><?php echo $row->supervisor_name; ?></td> 
                 <td>
-                  <i class="fa fa-pencil-square-o fa-1x fa-panel" aria-hidden="true"></i> &nbsp; Submitted
+                  <form method="post" action="save-status-changes.php?id=<?php echo $row->id; ?>" class="blah" name="save-status-changes<?php echo $row->id; ?>">
+                    <i class="fa fa-floppy-o fa-2x fa-panel view-comments" aria-hidden="true"  onclick="document.forms['save-status-changes<?php echo $row->id; ?>'].submit();"></i>
+                    <select name="status-change" class="u-full-width" id="save-status">
+                      <option <?php echo ((isset($row->status) && $row->status === 'Submitted') ? "value='Submitted' selected" : "value='Submitted'"); ?>>Submitted</option>
+                      <option <?php echo ((isset($row->status) && $row->status === 'Resolved') ? "value='Resolved' selected" : "value='Resolved'"); ?>>Resolved</option>
+                    </select>
+                  </form>
                 </td>
                 <td>
                   <i class="fa fa-plus-square-o fa-2x fa-panel postButton" aria-hidden="true" id="add-comment" data-key="<?php echo $row->id; ?>" onclick="getIdCreateComment(this)"></i>&nbsp;
@@ -109,6 +115,7 @@ function formatDate($date) {
                 endwhile;
               ?>
             </tbody>
+            
           </table>
           <span class="pagination">
           <?php
@@ -239,8 +246,6 @@ function formatDate($date) {
               <li><strong>Total time worked alone:</strong> <?php echo $row->time_worked_alone; ?></li>
             
             </ul>
-            
-            
             <script>
             // NEED TO CHECK AND see if there is any comments first. 
               // waiting for the page to load

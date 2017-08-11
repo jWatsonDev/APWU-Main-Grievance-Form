@@ -191,3 +191,7 @@ th {
 .blah {
   display: inline !important;
 }
+
+#save-status {
+  width: 75px !important;
+}
