@@ -94,10 +94,10 @@ function formatDate($date) {
                 <td><?php echo $row->supervisor_name; ?></td> 
                 <td>
                   <form method="post" action="save-status-changes.php?id=<?php echo $row->id; ?>" class="blah" name="save-status-changes<?php echo $row->id; ?>">
-                    <i class="fa fa-floppy-o fa-2x fa-panel view-comments" aria-hidden="true"  onclick="document.forms['save-status-changes<?php echo $row->id; ?>'].submit();"></i>
+                    <i class="fa fa-floppy-o fa-2x fa-panel view-comments" aria-hidden="true" onclick="document.forms['save-status-changes<?php echo $row->id; ?>'].submit();"></i>
                     <select name="status-change" class="u-full-width" id="save-status">
-                      <option <?php echo ((isset($row->status) && $row->status === 'Submitted') ? "value='Submitted' selected" : "value='Submitted'"); ?>>Submitted</option>
-                      <option <?php echo ((isset($row->status) && $row->status === 'Resolved') ? "value='Resolved' selected" : "value='Resolved'"); ?>>Resolved</option>
+                      <option <?php echo ((isset($row->grievance_status) && $row->grievance_status === 'Submitted') ? "value='Submitted' selected" : "value='Submitted'"); ?>>Submitted</option>
+                      <option <?php echo ((isset($row->grievance_status) && $row->grievance_status === 'Resolved') ? "value='Resolved' selected" : "value='Resolved'"); ?>>Resolved</option>
                     </select>
                   </form>
                 </td>
