@@ -8,9 +8,29 @@ if ($_SESSION['name']) {
 } else {
   header('Location: login.php');
 }
-
+/*
+ * BEGINNING OF PAGINATION
+ */
+$perPage = 5; // number of results per page
+if (isset($_GET['page']) && !empty($_GET['page'])){
+  $currentPage = $_GET['page'];
+} else {
+  $currentPage = 1;
+}
+$start = ($currentPage * $perPage) - $perPage; // where to start. what results to load in query
+$query = $handler->query("SELECT * FROM filed_grievances"); // get all filed grievances
+$totalResults = $query->rowCount(); // get total number of grievances
+$query = $handler->query("SELECT * FROM filed_grievances LIMIT $start, $perPage");
+$endPage = ceil($totalResults / $perPage);
+$startPage = 1;
+$nextpage = $curentPage + 1;
+$previousPage = $curentPage - 1;
+/*
+ * END OF PAGINATION
+ */
+ 
 // Query database for name and email from 
-$query = $handler->query("SELECT * FROM filed_grievances");
+$query = $handler->query("SELECT * FROM filed_grievances LIMIT $start, $perPage");
 
 
 
@@ -64,6 +84,19 @@ function formatDate($date) {
             ?>
           </tbody>
         </table>
+        <span class="pagination">
+          <?php
+            for ($i = $startPage; $i <= $endPage; $i++) { 
+              if ($_GET['page'] == $i) {
+                echo "[<a href='?page={$i}'>" . $i . "</a>] ";
+              } else if (empty($_GET['page']) && $i == 1) {
+                echo "[<a href='?page={$i}'>" . $i . "</a>] ";
+              } else {
+                echo "<a href='?page={$i}'>" . $i . "</a> ";
+              }
+            }
+          ?>
+          </span>
         </div>
       </div>
     </div>
