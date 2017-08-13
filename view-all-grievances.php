@@ -65,6 +65,7 @@ function formatDate($date) {
               <th>ID</th>
               <th>Date Filed</th>
               <th>Date of Grievance</th>
+              <th>Status</th>
               <th>Supervisor</th>
             </tr>
           </thead>
@@ -77,6 +78,7 @@ function formatDate($date) {
               <td><?php echo $row->id; ?></td>
               <td><?php echo formatDate($row->date_filed); ?></td>
               <td><?php echo $row->date; ?></td>
+              <td><?php echo $row->grievance_status; ?></td>
               <td><?php echo $row->supervisor_name; ?></td>
             </tr>
             <?php
