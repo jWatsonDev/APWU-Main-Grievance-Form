@@ -56,7 +56,7 @@ function formatDate($date) {
   <body>
     <div class="container">
       <div class="content-container">
-        <a href="index.php"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
+        <a href="<?php echo (!empty($_SESSION['admin']) && $_SESSION['admin']) ? 'admin/index.php' : 'index.php'; ?>"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
         <div style="padding-top: 80px">
           <h3>Filed Grievances<br><small><?php echo $name; ?></small></h3><br>
         <table class="u-full-width">

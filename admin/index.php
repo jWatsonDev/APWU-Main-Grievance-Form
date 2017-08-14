@@ -36,7 +36,7 @@ if (!empty($_SESSION['admin'])) {
             <h3 class="center-text">Welcome, <?php echo $name; ?>.</h3>
             <a class="button u-full-width" href="../account-info.php"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Update Account Information</a>
             <a class="button u-full-width" href="all-grievances.php"><i class="fa fa-folder-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; View All Grievances</a>
-            <a class="button u-full-width" href="view-all-grievances.php"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; View/Edit Submitted Grievances</a>
+            <a class="button u-full-width" href="../view-all-grievances.php"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; View My Grievances</a>
             <a class="button u-full-width" href="../create-grievance.php"><i class="fa fa-folder-open-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; File New Grievance</a>
             <a class="button u-full-width" href="../logout.php"><i class="fa fa-sign-out fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Logout</a>
           </div>

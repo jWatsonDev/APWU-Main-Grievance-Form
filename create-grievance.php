@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
   <body>
     <div class="container">
       <div class="form-container">
-        <a href="index.php"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
+        <a href="<?php echo (!empty($_SESSION['admin']) && $_SESSION['admin']) ? 'admin/index.php' : 'index.php'; ?>"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
         
         <!--START OF FORM -->
         <form id="sign-up-form" method="post" action="create-grievance.php">
